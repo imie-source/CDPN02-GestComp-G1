@@ -2,11 +2,11 @@ package test;
 
 import java.util.ArrayList;
 
-import fr.skills_dao_impl.DAOException;
-import fr.skills_dao_int.DAOAbstractFactory;
-import fr.skills_dao_int.FactoryDAO;
-import fr.skills_dto.TaskDTO;
-import fr.skills_service_impl.TaskService;
+import fr.skills.dao.impl.DAOException;
+import fr.skills.dao.inter.DAOAbstractFactory;
+import fr.skills.dao.inter.FactoryDAO;
+import fr.skills.dto.TaskDTO;
+import fr.skills.service.impl.TaskService;
 
 public class test {
 
