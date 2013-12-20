@@ -1,20 +1,18 @@
 package test;
 
-import java.util.ArrayList;
+import com.googlecode.lanterna.TerminalFacade;
+import com.googlecode.lanterna.gui.GUIScreen;
 
-import fr.skills.dao.impl.DAOException;
-import fr.skills.dao.inter.DAOAbstractFactory;
-import fr.skills.dao.inter.FactoryDAO;
-import fr.skills.dto.TaskDTO;
-import fr.skills.service.impl.TaskService;
+import fr.skills.prensentation.ListProject;
 
 public class test {
 
-	public static void main(String[] args) throws DAOException
+	public static void main(String[] args)
 	{
-		FactoryDAO afd = DAOAbstractFactory.getFactory(DAOAbstractFactory.DAO_FACTORY);
-
-		TaskService taskService = new TaskService(afd);
+		// FactoryDAO afd =
+		// DAOAbstractFactory.getFactory(DAOAbstractFactory.DAO_FACTORY);
+		//
+		// TaskService taskService = new TaskService(afd);
 		// ProjectService projectService = new ProjectService();
 		// projectService.create(new ProjectDTO(null, "Project 1"));
 
@@ -24,9 +22,23 @@ public class test {
 		// aTask.setNameTask("AZEZDE");
 		// aTask.setStatusTask(Status.Annuler);
 		// taskService.create(aTask);
+		//
+		// ArrayList<TaskDTO> aListeTask = (ArrayList<TaskDTO>)
+		// taskService.findAll();
+		//
+		// System.out.println(aListeTask.size());
 
-		ArrayList<TaskDTO> aListeTask = (ArrayList<TaskDTO>) taskService.findAll();
+		GUIScreen textGUI = TerminalFacade.createGUIScreen();
+		if (textGUI == null)
+		{
+			System.err.println("Couldn't allocate a terminal!");
+			return;
+		}
+		textGUI.getScreen().startScreen();
 
-		System.out.println(aListeTask.size());
+		// textGUI.showWindow(new AddProject(), GUIScreen.Position.FULL_SCREEN);
+		textGUI.showWindow(new ListProject(), GUIScreen.Position.FULL_SCREEN);
+		textGUI.getScreen().stopScreen();
+
 	}
 }

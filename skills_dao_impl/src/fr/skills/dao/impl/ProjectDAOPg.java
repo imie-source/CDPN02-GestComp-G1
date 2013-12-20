@@ -120,7 +120,7 @@ public class ProjectDAOPg implements DAO<ProjectDTO> {
 			result = findAllProject.executeQuery();
 			while (result.next())
 			{
-				vRet.add(new ProjectDTO(result.getInt(ID), result.getString(NAME)));
+				vRet.add(new ProjectDTO(result.getInt(1), result.getString(2)));
 			}
 		} catch (SQLException e)
 		{

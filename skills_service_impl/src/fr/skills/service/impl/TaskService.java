@@ -3,6 +3,7 @@ package fr.skills.service.impl;
 import java.util.List;
 
 import fr.skills.dao.inter.DAO;
+import fr.skills.dao.inter.DAOAbstractFactory;
 import fr.skills.dao.inter.FactoryDAO;
 import fr.skills.dto.TaskDTO;
 
@@ -10,8 +11,9 @@ public class TaskService {
 
 	private final DAO<TaskDTO> taskDAO;
 
-	public TaskService(FactoryDAO afdao)
+	public TaskService()
 	{
+		FactoryDAO afdao = DAOAbstractFactory.getFactory(DAOAbstractFactory.DAO_FACTORY);
 		taskDAO = afdao.getTaskDAO();
 	}
 

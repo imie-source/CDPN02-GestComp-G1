@@ -3,6 +3,7 @@ package fr.skills.service.impl;
 import java.util.List;
 
 import fr.skills.dao.inter.DAO;
+import fr.skills.dao.inter.DAOAbstractFactory;
 import fr.skills.dao.inter.FactoryDAO;
 import fr.skills.dto.ProjectDTO;
 
@@ -10,8 +11,9 @@ public class ProjectService {
 
 	private final DAO<ProjectDTO> projectDAO;
 
-	public ProjectService(FactoryDAO afdao)
+	public ProjectService()
 	{
+		FactoryDAO afdao = DAOAbstractFactory.getFactory(DAOAbstractFactory.DAO_FACTORY);
 		projectDAO = afdao.getProjectDAO();
 	}
 
