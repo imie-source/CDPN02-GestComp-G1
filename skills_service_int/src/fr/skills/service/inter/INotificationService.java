@@ -13,7 +13,7 @@ public interface INotificationService {
 
 	public NotificationDTO find(Integer anId);
 
-	public List<NotificationDTO> findAll(Integer anId);
+	public List<NotificationDTO> findAll();
 
 	public Boolean isOK(String anAction, final NotificationDTO aNotifDTO);
 }
