@@ -6,6 +6,7 @@ import fr.skills.dto.PermissionDTO;
 import fr.skills.dto.ProfileDTO;
 import fr.skills.dto.ProjectDTO;
 import fr.skills.dto.TaskDTO;
+import fr.skills.dto.UserDTO;
 
 public interface FactoryDAO {
 
@@ -32,5 +33,7 @@ public interface FactoryDAO {
 	public PromotionUserAssocDAO getPromotionUserAssocDAO();
 
 	public DAO<ProjectDTO> getProjectDAO();
+
+	public DAO<UserDTO> getUserDAO();
 
 }

@@ -7,19 +7,18 @@ import java.util.logging.Logger;
 import fr.skills.dao.inter.DAO;
 import fr.skills.dao.inter.FactoryDAO;
 import fr.skills.dto.ProfileDTO;
+import fr.skills.dto.UserDTO;
 
 public class FactoryDAOPg implements FactoryDAO {
 
-	private static Logger LOGGER = Logger.getLogger(FactoryDAOPg.class.getName());
+	private static Logger LOGGER = Logger.getLogger(FactoryDAOPg.class
+			.getName());
 	protected Connection connection;
 
-	public FactoryDAOPg()
-	{
-		try
-		{
+	public FactoryDAOPg() {
+		try {
 			connection = ConnectionPool.getInstance().checkout();
-		} catch (SQLException e)
-		{
+		} catch (SQLException e) {
 			StringBuilder vMessageErreur = new StringBuilder();
 			vMessageErreur.append("SQL ERROR : ");
 			vMessageErreur.append(e);
@@ -28,13 +27,10 @@ public class FactoryDAOPg implements FactoryDAO {
 	}
 
 	@Override
-	public void beginTransaction()
-	{
-		try
-		{
+	public void beginTransaction() {
+		try {
 			connection.setAutoCommit(false);
-		} catch (SQLException e)
-		{
+		} catch (SQLException e) {
 			StringBuilder vMessageErreur = new StringBuilder();
 			vMessageErreur.append("SQL ERROR : ");
 			vMessageErreur.append(e);
@@ -44,13 +40,10 @@ public class FactoryDAOPg implements FactoryDAO {
 	}
 
 	@Override
-	public void endTransaction()
-	{
-		try
-		{
+	public void endTransaction() {
+		try {
 			connection.close();
-		} catch (SQLException e)
-		{
+		} catch (SQLException e) {
 			StringBuilder vMessageErreur = new StringBuilder();
 			vMessageErreur.append("SQL ERROR : ");
 			vMessageErreur.append(e);
@@ -59,62 +52,58 @@ public class FactoryDAOPg implements FactoryDAO {
 	}
 
 	@Override
-	public FonctionDAOPg getFonctionDAO()
-	{
+	public FonctionDAOPg getFonctionDAO() {
 		return new FonctionDAOPg(connection);
 	}
 
 	@Override
-	public PermissionDAOPg getPermissionDAO()
-	{
+	public PermissionDAOPg getPermissionDAO() {
 		return new PermissionDAOPg(connection);
 	}
 
 	@Override
-	public RightsAssocDAOPg getRightsAssocDAO()
-	{
+	public RightsAssocDAOPg getRightsAssocDAO() {
 		return new RightsAssocDAOPg(connection);
 	}
 
 	@Override
-	public NotificationDAOPg getNotificationDAO()
-	{
+	public NotificationDAOPg getNotificationDAO() {
 		return new NotificationDAOPg(connection);
 	}
 
 	@Override
-	public NotifAssocDAOPg getNotifAssocDAO()
-	{
+	public NotifAssocDAOPg getNotifAssocDAO() {
 		return new NotifAssocDAOPg(connection);
 	}
 
 	@Override
-	public SkillTaskAssocDAOPg getSkillTaskAssocDAO()
-	{
+	public SkillTaskAssocDAOPg getSkillTaskAssocDAO() {
 		return new SkillTaskAssocDAOPg(connection);
 	}
 
 	@Override
-	public PromotionUserAssocDAOPg getPromotionUserAssocDAO()
-	{
+	public PromotionUserAssocDAOPg getPromotionUserAssocDAO() {
 		return new PromotionUserAssocDAOPg(connection);
 	}
 
 	@Override
-	public TaskDAOPg getTaskDAO()
-	{
+	public TaskDAOPg getTaskDAO() {
 		return new TaskDAOPg(connection);
 	}
 
 	@Override
-	public ProjectDAOPg getProjectDAO()
-	{
+	public ProjectDAOPg getProjectDAO() {
 		return new ProjectDAOPg(connection);
 	}
 
 	@Override
-	public DAO<ProfileDTO> getProfileDAO()
-	{
+	public DAO<ProfileDTO> getProfileDAO() {
 		return new ProfileDAOPg(connection);
+	}
+
+	@Override
+	public DAO<UserDTO> getUserDAO() {
+
+		return new UserDAOPg(connection);
 	}
 }
