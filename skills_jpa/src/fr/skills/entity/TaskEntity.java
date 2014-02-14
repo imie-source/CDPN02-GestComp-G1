@@ -16,6 +16,7 @@ public class TaskEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_task")
 	private Integer idTask;
 
@@ -25,6 +26,11 @@ public class TaskEntity implements Serializable {
 	private Integer status;
 
 	private String title;
+
+	//bi-directional many-to-one association to ProjectEntity
+	@ManyToOne
+	@JoinColumn(name="id_projet_project")
+	private ProjectEntity project;
 
 	//bi-directional many-to-many association to SkillEntity
 	@ManyToMany
@@ -38,11 +44,6 @@ public class TaskEntity implements Serializable {
 			}
 		)
 	private List<SkillEntity> skills;
-
-	//bi-directional many-to-one association to ProjectEntity
-	@ManyToOne
-	@JoinColumn(name="id_projet_project")
-	private ProjectEntity project;
 
 	public TaskEntity() {
 	}
@@ -79,20 +80,20 @@ public class TaskEntity implements Serializable {
 		this.title = title;
 	}
 
-	public List<SkillEntity> getSkills() {
-		return this.skills;
-	}
-
-	public void setSkills(List<SkillEntity> skills) {
-		this.skills = skills;
-	}
-
 	public ProjectEntity getProject() {
 		return this.project;
 	}
 
 	public void setProject(ProjectEntity project) {
 		this.project = project;
+	}
+
+	public List<SkillEntity> getSkills() {
+		return this.skills;
+	}
+
+	public void setSkills(List<SkillEntity> skills) {
+		this.skills = skills;
 	}
 
 }

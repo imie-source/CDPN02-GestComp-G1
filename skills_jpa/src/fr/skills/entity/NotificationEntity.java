@@ -28,6 +28,10 @@ public class NotificationEntity implements Serializable {
 	@ManyToMany(mappedBy="notifications")
 	private List<PersonEntity> persons;
 
+	//bi-directional many-to-one association to PersonNotifAssocEntity
+	@OneToMany(mappedBy="notification")
+	private List<PersonNotifAssocEntity> personNotifAssocs;
+
 	public NotificationEntity() {
 	}
 
@@ -61,6 +65,28 @@ public class NotificationEntity implements Serializable {
 
 	public void setPersons(List<PersonEntity> persons) {
 		this.persons = persons;
+	}
+
+	public List<PersonNotifAssocEntity> getPersonNotifAssocs() {
+		return this.personNotifAssocs;
+	}
+
+	public void setPersonNotifAssocs(List<PersonNotifAssocEntity> personNotifAssocs) {
+		this.personNotifAssocs = personNotifAssocs;
+	}
+
+	public PersonNotifAssocEntity addPersonNotifAssoc(PersonNotifAssocEntity personNotifAssoc) {
+		getPersonNotifAssocs().add(personNotifAssoc);
+		personNotifAssoc.setNotification(this);
+
+		return personNotifAssoc;
+	}
+
+	public PersonNotifAssocEntity removePersonNotifAssoc(PersonNotifAssocEntity personNotifAssoc) {
+		getPersonNotifAssocs().remove(personNotifAssoc);
+		personNotifAssoc.setNotification(null);
+
+		return personNotifAssoc;
 	}
 
 }

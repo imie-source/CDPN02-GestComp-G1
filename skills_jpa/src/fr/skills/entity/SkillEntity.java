@@ -21,15 +21,6 @@ public class SkillEntity implements Serializable {
 	@Column(name="name_skill")
 	private String nameSkill;
 
-	//bi-directional many-to-one association to SkillEntity
-	@ManyToOne
-	@JoinColumn(name="id_skill1")
-	private SkillEntity skill;
-
-	//bi-directional many-to-one association to SkillEntity
-	@OneToMany(mappedBy="skill")
-	private List<SkillEntity> skills;
-
 	//bi-directional many-to-one association to SkillPersonAssocEntity
 	@OneToMany(mappedBy="skill")
 	private List<SkillPersonAssocEntity> skillPersonAssocs;
@@ -55,36 +46,6 @@ public class SkillEntity implements Serializable {
 
 	public void setNameSkill(String nameSkill) {
 		this.nameSkill = nameSkill;
-	}
-
-	public SkillEntity getSkill() {
-		return this.skill;
-	}
-
-	public void setSkill(SkillEntity skill) {
-		this.skill = skill;
-	}
-
-	public List<SkillEntity> getSkills() {
-		return this.skills;
-	}
-
-	public void setSkills(List<SkillEntity> skills) {
-		this.skills = skills;
-	}
-
-	public SkillEntity addSkill(SkillEntity skill) {
-		getSkills().add(skill);
-		skill.setSkill(this);
-
-		return skill;
-	}
-
-	public SkillEntity removeSkill(SkillEntity skill) {
-		getSkills().remove(skill);
-		skill.setSkill(null);
-
-		return skill;
 	}
 
 	public List<SkillPersonAssocEntity> getSkillPersonAssocs() {

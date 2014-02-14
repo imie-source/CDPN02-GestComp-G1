@@ -1,19 +1,8 @@
 package fr.skills.entity;
 
 import java.io.Serializable;
+import javax.persistence.*;
 import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 
 /**
@@ -26,7 +15,7 @@ public class PersonEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_person")
+	@Column(name="id_person" )
 	private Integer idPerson;
 
 	private Boolean available;
@@ -43,11 +32,6 @@ public class PersonEntity implements Serializable {
 
 	private String pswd;
 
-	//bi-directional many-to-one association to PromotionEntity
-	@ManyToOne
-	@JoinColumn(name="id_promotion_promotion")
-	private PromotionEntity promotion;
-
 	//bi-directional many-to-many association to NotificationEntity
 	@ManyToMany
 	@JoinTable(
@@ -60,6 +44,15 @@ public class PersonEntity implements Serializable {
 			}
 		)
 	private List<NotificationEntity> notifications;
+
+	//bi-directional many-to-one association to PromotionEntity
+	@ManyToOne
+	@JoinColumn(name="id_promotion_promotion")
+	private PromotionEntity promotion;
+
+	//bi-directional many-to-one association to PersonNotifAssocEntity
+	@OneToMany(mappedBy="person")
+	private List<PersonNotifAssocEntity> personNotifAssocs;
 
 	//bi-directional many-to-many association to ProfileEntity
 	@ManyToMany(mappedBy="persons")
@@ -144,6 +137,14 @@ public class PersonEntity implements Serializable {
 		this.pswd = pswd;
 	}
 
+	public List<NotificationEntity> getNotifications() {
+		return this.notifications;
+	}
+
+	public void setNotifications(List<NotificationEntity> notifications) {
+		this.notifications = notifications;
+	}
+
 	public PromotionEntity getPromotion() {
 		return this.promotion;
 	}
@@ -152,12 +153,26 @@ public class PersonEntity implements Serializable {
 		this.promotion = promotion;
 	}
 
-	public List<NotificationEntity> getNotifications() {
-		return this.notifications;
+	public List<PersonNotifAssocEntity> getPersonNotifAssocs() {
+		return this.personNotifAssocs;
 	}
 
-	public void setNotifications(List<NotificationEntity> notifications) {
-		this.notifications = notifications;
+	public void setPersonNotifAssocs(List<PersonNotifAssocEntity> personNotifAssocs) {
+		this.personNotifAssocs = personNotifAssocs;
+	}
+
+	public PersonNotifAssocEntity addPersonNotifAssoc(PersonNotifAssocEntity personNotifAssoc) {
+		getPersonNotifAssocs().add(personNotifAssoc);
+		personNotifAssoc.setPerson(this);
+
+		return personNotifAssoc;
+	}
+
+	public PersonNotifAssocEntity removePersonNotifAssoc(PersonNotifAssocEntity personNotifAssoc) {
+		getPersonNotifAssocs().remove(personNotifAssoc);
+		personNotifAssoc.setPerson(null);
+
+		return personNotifAssoc;
 	}
 
 	public List<ProfileEntity> getProfiles() {

@@ -38,8 +38,8 @@ public class ServletTestJPA1 extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("skills_jpa");   
-		EntityManager em = emf.createEntityManager();    
+		  
+		EntityManager em = factory.createEntityManager();    
 
 		EntityTransaction transac = em.getTransaction();
 		transac.begin();
@@ -59,7 +59,7 @@ public class ServletTestJPA1 extends HttpServlet {
 		transac.commit();
 		
 		em.close();   
-		emf.close();  
+		  
 
 		System.out.println("test");
 	}

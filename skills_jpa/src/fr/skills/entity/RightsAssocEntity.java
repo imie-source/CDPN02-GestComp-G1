@@ -18,17 +18,17 @@ public class RightsAssocEntity implements Serializable {
 
 	//bi-directional many-to-one association to FonctionEntity
 	@ManyToOne
-	@JoinColumn(name="id_fonction_fonction", insertable= false, updatable=false )
+	@JoinColumn(name="id_fonction_fonction", updatable=false, insertable=false )
 	private FonctionEntity fonction;
 
 	//bi-directional many-to-one association to PermissionEntity
 	@ManyToOne
-	@JoinColumn(name="id_permission_permission", insertable= false, updatable=false )
+	@JoinColumn(name="id_permission_permission", updatable=false, insertable=false )
 	private PermissionEntity permission;
 
 	//bi-directional many-to-one association to ProfileEntity
 	@ManyToOne
-	@JoinColumn(name="id_profile_profile", insertable= false, updatable=false )
+	@JoinColumn(name="id_profile_profile", updatable=false, insertable=false )
 	private ProfileEntity profile;
 
 	public RightsAssocEntity() {

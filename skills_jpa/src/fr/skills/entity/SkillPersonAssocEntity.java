@@ -21,11 +21,12 @@ public class SkillPersonAssocEntity implements Serializable {
 
 	//bi-directional many-to-one association to PersonEntity
 	@ManyToOne
-	@JoinColumn(name="id_person_person", insertable= false, updatable=false )
+	@JoinColumn(name="id_person_person", updatable=false, insertable=false )
 	private PersonEntity person;
 
 	//bi-directional many-to-one association to SkillEntity
-	@ManyToOne	@JoinColumn(name="id_skill_skill", insertable= false, updatable=false )
+	@ManyToOne
+	@JoinColumn(name="id_skill_skill", updatable=false, insertable=false )
 	private SkillEntity skill;
 
 	public SkillPersonAssocEntity() {

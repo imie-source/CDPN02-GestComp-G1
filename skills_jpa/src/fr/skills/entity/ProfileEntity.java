@@ -33,15 +33,6 @@ public class ProfileEntity implements Serializable {
 		)
 	private List<PersonEntity> persons;
 
-	//bi-directional many-to-one association to ProfileEntity
-	@ManyToOne
-	@JoinColumn(name="id_profile1")
-	private ProfileEntity profile;
-
-	//bi-directional many-to-one association to ProfileEntity
-	@OneToMany(mappedBy="profile")
-	private List<ProfileEntity> profiles;
-
 	//bi-directional many-to-one association to RightsAssocEntity
 	@OneToMany(mappedBy="profile")
 	private List<RightsAssocEntity> rightsAssocs;
@@ -71,36 +62,6 @@ public class ProfileEntity implements Serializable {
 
 	public void setPersons(List<PersonEntity> persons) {
 		this.persons = persons;
-	}
-
-	public ProfileEntity getProfile() {
-		return this.profile;
-	}
-
-	public void setProfile(ProfileEntity profile) {
-		this.profile = profile;
-	}
-
-	public List<ProfileEntity> getProfiles() {
-		return this.profiles;
-	}
-
-	public void setProfiles(List<ProfileEntity> profiles) {
-		this.profiles = profiles;
-	}
-
-	public ProfileEntity addProfile(ProfileEntity profile) {
-		getProfiles().add(profile);
-		profile.setProfile(this);
-
-		return profile;
-	}
-
-	public ProfileEntity removeProfile(ProfileEntity profile) {
-		getProfiles().remove(profile);
-		profile.setProfile(null);
-
-		return profile;
 	}
 
 	public List<RightsAssocEntity> getRightsAssocs() {
