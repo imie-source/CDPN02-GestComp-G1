@@ -9,7 +9,7 @@
         <dependent-module archiveName="skills_dto.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/skills_dto/skills_dto">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="skills_service_int.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/skills_service_int/skills_service_int">
+        <dependent-module archiveName="skills_service_impl.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/skills_service_impl/skills_service_impl">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="context-root" value="skills_jpa_impl_temp"/>

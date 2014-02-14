@@ -60,7 +60,6 @@ public class ServletTestJPA1 extends HttpServlet {
 		transac.commit();
 
 		System.out.println(userService.find(1).toString());
-		System.out.println(userService.find(91).toString());
 
 		for (UserDTO vUser : userService.findAll()) {
 			System.out.println(vUser.toString());

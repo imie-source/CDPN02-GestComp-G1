@@ -14,7 +14,7 @@ import fr.skills.service.inter.IUserService;
 public class UserService implements IUserService {
 
 	private final EntityManager entityManager;
-	
+
 	public UserService(EntityManagerFactory aFactory) {
 		entityManager = aFactory.createEntityManager();
 	}
@@ -22,16 +22,16 @@ public class UserService implements IUserService {
 	@Override
 	public void create(UserDTO aUserDTO) {
 		if (isOK("create", aUserDTO)) {
-			PersonEntity vPerson= new PersonEntity(aUserDTO);
+			PersonEntity vPerson = new PersonEntity(aUserDTO);
 			entityManager.persist(vPerson);
-			
+
 		}
 	}
 
 	@Override
 	public void delete(UserDTO aUserDTO) {
 		if (isOK("delete", aUserDTO)) {
-			PersonEntity vPerson= new PersonEntity(aUserDTO);
+			PersonEntity vPerson = new PersonEntity(aUserDTO);
 			entityManager.remove(vPerson);
 		}
 	}
@@ -39,63 +39,54 @@ public class UserService implements IUserService {
 	@Override
 	public void update(UserDTO aUserDTO) {
 		if (isOK("update", aUserDTO)) {
-			PersonEntity vPerson= new PersonEntity(aUserDTO);
+			PersonEntity vPerson = new PersonEntity(aUserDTO);
 			entityManager.persist(vPerson);
 		}
 	}
 
 	@Override
-	public UserDTO find(Integer anId) {	
-		return  PersonEntity.buildUserDTO(entityManager.find(PersonEntity.class, anId));
+	public UserDTO find(Integer anId) {
+		return PersonEntity.buildUserDTO(entityManager.find(PersonEntity.class, anId));
 	}
 
 	@Override
 	public List<UserDTO> findAll() {
 		List<UserDTO> vRet = new ArrayList<UserDTO>();
-		Query vQuery = entityManager.createQuery("select p from Personne p where p.nom='nom2'");
-		List<PersonEntity> vListPersonEntity = (List<PersonEntity>) vQuery.getResultList();
-		for (PersonEntity vPerson : vListPersonEntity)
-		{
-			vRet.add( PersonEntity.buildUserDTO(vPerson));
-		}		
+		Query vQuery = entityManager.createQuery("select p from PersonEntity p");
+		List<PersonEntity> vListPersonEntity = vQuery.getResultList();
+		for (PersonEntity vPerson : vListPersonEntity) {
+			vRet.add(PersonEntity.buildUserDTO(vPerson));
+		}
 		return vRet;
 	}
 
 	private boolean isOK(String anAction, UserDTO aUserDTO) {
 		Boolean vRet = false;
+
+		int vSwitch = 99;
+		if (anAction.toLowerCase().equals("create")) {
+			vSwitch = 1;
+		} else if (anAction.toLowerCase().equals("delete")) {
+			vSwitch = 2;
+		} else if (anAction.toLowerCase().equals("update")) {
+			vSwitch = 3;
+		}
+
 		if (aUserDTO != null) {
-			switch (anAction.toLowerCase()) {
-			case "create":
-				if ((aUserDTO.getEmail() != null)
-						&& (!aUserDTO.getEmail().isEmpty())
-						&& (aUserDTO.getLogin() != null)
-						&& (!aUserDTO.getLogin().isEmpty())
-						&& (aUserDTO.getName() != null)
-						&& (!aUserDTO.getName().isEmpty())
-						&& (aUserDTO.getPassword() != null)
-						&& (!aUserDTO.getPassword().isEmpty())
-						&& (aUserDTO.getPhone() != null)
-						&& (!aUserDTO.getPhone().isEmpty())) {
+			switch (vSwitch) {
+			case 1:
+				if ((aUserDTO.getEmail() != null) && (!aUserDTO.getEmail().isEmpty()) && (aUserDTO.getLogin() != null) && (!aUserDTO.getLogin().isEmpty()) && (aUserDTO.getName() != null) && (!aUserDTO.getName().isEmpty()) && (aUserDTO.getPassword() != null) && (!aUserDTO.getPassword().isEmpty()) && (aUserDTO.getPhone() != null) && (!aUserDTO.getPhone().isEmpty())) {
 					vRet = true;
 				}
 				break;
-			case "delete":
+			case 2:
 				if (aUserDTO.getIdUser() != null) {
 					vRet = true;
 				}
 				break;
 
-			case "update":
-				if ((aUserDTO.getEmail() != null)
-						&& (!aUserDTO.getEmail().isEmpty())
-						&& (aUserDTO.getLogin() != null)
-						&& (!aUserDTO.getLogin().isEmpty())
-						&& (aUserDTO.getName() != null)
-						&& (!aUserDTO.getName().isEmpty())
-						&& (aUserDTO.getPassword() != null)
-						&& (!aUserDTO.getPassword().isEmpty())
-						&& (aUserDTO.getPhone() != null)
-						&& (!aUserDTO.getPhone().isEmpty())) {
+			case 3:
+				if ((aUserDTO.getEmail() != null) && (!aUserDTO.getEmail().isEmpty()) && (aUserDTO.getLogin() != null) && (!aUserDTO.getLogin().isEmpty()) && (aUserDTO.getName() != null) && (!aUserDTO.getName().isEmpty()) && (aUserDTO.getPassword() != null) && (!aUserDTO.getPassword().isEmpty()) && (aUserDTO.getPhone() != null) && (!aUserDTO.getPhone().isEmpty())) {
 					vRet = true;
 				}
 				break;

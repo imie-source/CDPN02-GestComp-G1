@@ -17,22 +17,18 @@ import javax.persistence.Table;
 
 import fr.skills.dto.UserDTO;
 
-
-
-
-
-
 /**
  * The persistent class for the person database table.
  * 
  */
 @Entity
-@Table(name="person")
+@Table(name = "person")
 public class PersonEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_person" )
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_person")
 	private Integer idPerson;
 
 	private Boolean available;
@@ -49,56 +45,48 @@ public class PersonEntity implements Serializable {
 
 	private String pswd;
 
-	//bi-directional many-to-many association to NotificationEntity
+	// bi-directional many-to-many association to NotificationEntity
 	@ManyToMany
-	@JoinTable(
-		name="person_notif_assoc"
-		, joinColumns={
-			@JoinColumn(name="id_person_person")
-			}
-		, inverseJoinColumns={
-			@JoinColumn(name="id_notification_notification")
-			}
-		)
+	@JoinTable(name = "person_notif_assoc", joinColumns = { @JoinColumn(name = "id_person_person") }, inverseJoinColumns = { @JoinColumn(name = "id_notification_notification") })
 	private List<NotificationEntity> notifications;
 
-	//bi-directional many-to-one association to PromotionEntity
+	// bi-directional many-to-one association to PromotionEntity
 	@ManyToOne
-	@JoinColumn(name="id_promotion_promotion")
+	@JoinColumn(name = "id_promotion_promotion")
 	private PromotionEntity promotion;
 
-	//bi-directional many-to-one association to PersonNotifAssocEntity
-	@OneToMany(mappedBy="person")
+	// bi-directional many-to-one association to PersonNotifAssocEntity
+	@OneToMany(mappedBy = "person")
 	private List<PersonNotifAssocEntity> personNotifAssocs;
 
-	//bi-directional many-to-many association to ProfileEntity
-	@ManyToMany(mappedBy="persons")
+	// bi-directional many-to-many association to ProfileEntity
+	@ManyToMany(mappedBy = "persons")
 	private List<ProfileEntity> profiles;
 
-	//bi-directional many-to-one association to ProjectEntity
-	@OneToMany(mappedBy="person")
+	// bi-directional many-to-one association to ProjectEntity
+	@OneToMany(mappedBy = "person")
 	private List<ProjectEntity> projects1;
 
-	//bi-directional many-to-many association to ProjectEntity
-	@ManyToMany(mappedBy="persons")
+	// bi-directional many-to-many association to ProjectEntity
+	@ManyToMany(mappedBy = "persons")
 	private List<ProjectEntity> projects2;
 
-	//bi-directional many-to-one association to SkillPersonAssocEntity
-	@OneToMany(mappedBy="person")
+	// bi-directional many-to-one association to SkillPersonAssocEntity
+	@OneToMany(mappedBy = "person")
 	private List<SkillPersonAssocEntity> skillPersonAssocs;
 
 	public PersonEntity() {
 	}
 
 	public PersonEntity(UserDTO aUserDTO) {
-		PersonEntity vRet =  new PersonEntity();
+		PersonEntity vRet = new PersonEntity();
 		vRet.setAvailable(aUserDTO.isAvailable());
 		vRet.setDescription(aUserDTO.getDescription());
 		vRet.setEmail(aUserDTO.getEmail());
 		vRet.setIdPerson(aUserDTO.getIdUser());
 		vRet.setLogin(aUserDTO.getLogin());
 		vRet.setName(aUserDTO.getName());
-		vRet.setPswd(aUserDTO.getPassword());		
+		vRet.setPswd(aUserDTO.getPassword());
 	}
 
 	public Integer getIdPerson() {
@@ -262,18 +250,20 @@ public class PersonEntity implements Serializable {
 
 		return skillPersonAssoc;
 	}
-	
-	public static UserDTO buildUserDTO(PersonEntity aPersonEntity)
-	{
-		UserDTO vRet = new UserDTO();
-		vRet.setAvailable(aPersonEntity.getAvailable());
-		vRet.setDescription(aPersonEntity.getDescription());
-		vRet.setEmail(aPersonEntity.getEmail());
-		vRet.setIdUser(aPersonEntity.getIdPerson());
-		vRet.setLogin(aPersonEntity.getLogin());
-		vRet.setName(aPersonEntity.getName());
-		vRet.setPassword(aPersonEntity.getPswd());
-		vRet.setPhone(aPersonEntity.getPhone());
+
+	public static UserDTO buildUserDTO(PersonEntity aPersonEntity) {
+		UserDTO vRet = null;
+		if (aPersonEntity != null) {
+			vRet = new UserDTO();
+			vRet.setAvailable(aPersonEntity.getAvailable());
+			vRet.setDescription(aPersonEntity.getDescription());
+			vRet.setEmail(aPersonEntity.getEmail());
+			vRet.setIdUser(aPersonEntity.getIdPerson());
+			vRet.setLogin(aPersonEntity.getLogin());
+			vRet.setName(aPersonEntity.getName());
+			vRet.setPassword(aPersonEntity.getPswd());
+			vRet.setPhone(aPersonEntity.getPhone());
+		}
 		return vRet;
 	}
 
