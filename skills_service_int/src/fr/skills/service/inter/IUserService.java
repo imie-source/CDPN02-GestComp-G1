@@ -6,11 +6,11 @@ import fr.skills.dto.UserDTO;
 
 public interface IUserService {
 
-	public UserDTO create(UserDTO aUserDTO);
+	public void create(UserDTO aUserDTO);
 
-	public Boolean delete(UserDTO aUserDTO);
+	public void delete(UserDTO aUserDTO);
 
-	public Boolean update(UserDTO aUserDTO);
+	public void update(UserDTO aUserDTO);
 
 	public UserDTO find(Integer anId);
 

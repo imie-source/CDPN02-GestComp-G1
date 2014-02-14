@@ -12,5 +12,6 @@
 			<attribute name="owner.project.facets" value="jpt.jpa"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry combineaccessrules="false" kind="src" path="/skills_dto"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

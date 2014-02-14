@@ -1,58 +1,60 @@
 package fr.skills.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import fr.skills.dao.inter.DAO;
-import fr.skills.dao.inter.FactoryDAO;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+
 import fr.skills.dto.UserDTO;
+import fr.skills.entity.PersonEntity;
 import fr.skills.service.inter.IUserService;
 
 public class UserService implements IUserService {
 
-	private final DAO<UserDTO> userDAO;
-
-	public UserService(FactoryDAO afdao) {
-		userDAO = afdao.getUserDAO();
+	private final EntityManager entityManager;
+	
+	public UserService(EntityManagerFactory aFactory) {
+		entityManager = aFactory.createEntityManager();
 	}
 
 	@Override
-	public UserDTO create(UserDTO aUserDTO) {
+	public void create(UserDTO aUserDTO) {
 		if (isOK("create", aUserDTO)) {
-			aUserDTO = userDAO.create(aUserDTO);
+			PersonEntity vPerson= new PersonEntity(aUserDTO);
+			entityManager.persist(vPerson);
+			
 		}
-		return aUserDTO;
 	}
 
 	@Override
-	public Boolean delete(UserDTO aUserDTO) {
-		Boolean vRet = false;
+	public void delete(UserDTO aUserDTO) {
 		if (isOK("delete", aUserDTO)) {
-			vRet = userDAO.delete(aUserDTO);
+			PersonEntity vPerson= new PersonEntity(aUserDTO);
+			entityManager.remove(vPerson);
 		}
-		return vRet;
 	}
 
 	@Override
-	public Boolean update(UserDTO aUserDTO) {
-		Boolean vRet = false;
+	public void update(UserDTO aUserDTO) {
 		if (isOK("update", aUserDTO)) {
-			userDAO.update(aUserDTO);
+			PersonEntity vPerson= new PersonEntity(aUserDTO);
+			entityManager.persist(vPerson);
 		}
-		return vRet;
 	}
 
 	@Override
 	public UserDTO find(Integer anId) {
 		UserDTO vRet = null;
-		if (anId != null) {
-			vRet = userDAO.find(anId);
-		}
+//		if (anId != null) {
+//			vRet = userDAO.find(anId);
+//		}
 		return vRet;
 	}
 
 	@Override
 	public List<UserDTO> findAll() {
-		return userDAO.findAll();
+		return new ArrayList<UserDTO>();
 	}
 
 	private boolean isOK(String anAction, UserDTO aUserDTO) {
