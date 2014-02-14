@@ -3,6 +3,7 @@
 	<name>skills_jpa</name>
 	<comment></comment>
 	<projects>
+		<project>skills_dto</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

@@ -20,6 +20,8 @@ import fr.skills.dto.UserDTO;
 
 
 
+
+
 /**
  * The persistent class for the person database table.
  * 
@@ -89,7 +91,14 @@ public class PersonEntity implements Serializable {
 	}
 
 	public PersonEntity(UserDTO aUserDTO) {
-		// TODO Auto-generated constructor stub
+		PersonEntity vRet =  new PersonEntity();
+		vRet.setAvailable(aUserDTO.isAvailable());
+		vRet.setDescription(aUserDTO.getDescription());
+		vRet.setEmail(aUserDTO.getEmail());
+		vRet.setIdPerson(aUserDTO.getIdUser());
+		vRet.setLogin(aUserDTO.getLogin());
+		vRet.setName(aUserDTO.getName());
+		vRet.setPswd(aUserDTO.getPassword());		
 	}
 
 	public Integer getIdPerson() {
@@ -252,6 +261,20 @@ public class PersonEntity implements Serializable {
 		skillPersonAssoc.setPerson(null);
 
 		return skillPersonAssoc;
+	}
+	
+	public static UserDTO buildUserDTO(PersonEntity aPersonEntity)
+	{
+		UserDTO vRet = new UserDTO();
+		vRet.setAvailable(aPersonEntity.getAvailable());
+		vRet.setDescription(aPersonEntity.getDescription());
+		vRet.setEmail(aPersonEntity.getEmail());
+		vRet.setIdUser(aPersonEntity.getIdPerson());
+		vRet.setLogin(aPersonEntity.getLogin());
+		vRet.setName(aPersonEntity.getName());
+		vRet.setPassword(aPersonEntity.getPswd());
+		vRet.setPhone(aPersonEntity.getPhone());
+		return vRet;
 	}
 
 }

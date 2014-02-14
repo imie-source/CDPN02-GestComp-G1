@@ -1,5 +1,6 @@
 package fr.skills.dto;
 
+
 public class UserDTO {
 
 	
@@ -27,8 +28,7 @@ public class UserDTO {
 		this.description = description;
 		this.available = available;
 	}
-	
-	
+
 	// GETTERS & SETTERS
 	public Integer getIdUser() {
 		return idUser;
