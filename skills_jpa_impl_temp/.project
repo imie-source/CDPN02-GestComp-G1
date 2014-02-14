@@ -3,6 +3,7 @@
 	<name>skills_jpa_impl_temp</name>
 	<comment></comment>
 	<projects>
+		<project>skills_jpa</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

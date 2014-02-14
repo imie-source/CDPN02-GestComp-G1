@@ -21,12 +21,11 @@ public class SkillPersonAssocEntity implements Serializable {
 
 	//bi-directional many-to-one association to PersonEntity
 	@ManyToOne
-	@JoinColumn(name="id_person_person")
+	@JoinColumn(name="id_person_person", insertable= false, updatable=false )
 	private PersonEntity person;
 
 	//bi-directional many-to-one association to SkillEntity
-	@ManyToOne
-	@JoinColumn(name="id_skill_skill")
+	@ManyToOne	@JoinColumn(name="id_skill_skill", insertable= false, updatable=false )
 	private SkillEntity skill;
 
 	public SkillPersonAssocEntity() {
@@ -48,13 +47,13 @@ public class SkillPersonAssocEntity implements Serializable {
 		this.levelSkill = levelSkill;
 	}
 
-	public PersonEntity getPerson() {
-		return this.person;
-	}
-
-	public void setPerson(PersonEntity person) {
-		this.person = person;
-	}
+//	public PersonEntity getPerson() {
+//		return this.person;
+//	}
+//
+//	public void setPerson(PersonEntity person) {
+//		this.person = person;
+//	}
 
 	public SkillEntity getSkill() {
 		return this.skill;

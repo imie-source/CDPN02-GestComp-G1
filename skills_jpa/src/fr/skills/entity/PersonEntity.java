@@ -62,9 +62,9 @@ public class PersonEntity implements Serializable {
 	@ManyToMany(mappedBy="persons")
 	private List<ProjectEntity> projects2;
 
-	//bi-directional many-to-one association to SkillPersonAssocEntity
-	@OneToMany(mappedBy="person")
-	private List<SkillPersonAssocEntity> skillPersonAssocs;
+//	//bi-directional many-to-one association to SkillPersonAssocEntity
+//	@OneToMany(mappedBy="person")
+//	private List<SkillPersonAssocEntity> skillPersonAssocs;
 
 	public PersonEntity() {
 	}
@@ -187,26 +187,26 @@ public class PersonEntity implements Serializable {
 		this.projects2 = projects2;
 	}
 
-	public List<SkillPersonAssocEntity> getSkillPersonAssocs() {
-		return this.skillPersonAssocs;
-	}
-
-	public void setSkillPersonAssocs(List<SkillPersonAssocEntity> skillPersonAssocs) {
-		this.skillPersonAssocs = skillPersonAssocs;
-	}
-
-	public SkillPersonAssocEntity addSkillPersonAssoc(SkillPersonAssocEntity skillPersonAssoc) {
-		getSkillPersonAssocs().add(skillPersonAssoc);
-		skillPersonAssoc.setPerson(this);
-
-		return skillPersonAssoc;
-	}
-
-	public SkillPersonAssocEntity removeSkillPersonAssoc(SkillPersonAssocEntity skillPersonAssoc) {
-		getSkillPersonAssocs().remove(skillPersonAssoc);
-		skillPersonAssoc.setPerson(null);
-
-		return skillPersonAssoc;
-	}
+//	public List<SkillPersonAssocEntity> getSkillPersonAssocs() {
+//		return this.skillPersonAssocs;
+//	}
+//
+//	public void setSkillPersonAssocs(List<SkillPersonAssocEntity> skillPersonAssocs) {
+//		this.skillPersonAssocs = skillPersonAssocs;
+//	}
+//
+//	public SkillPersonAssocEntity addSkillPersonAssoc(SkillPersonAssocEntity skillPersonAssoc) {
+//		getSkillPersonAssocs().add(skillPersonAssoc);
+//		skillPersonAssoc.setPerson(this);
+//
+//		return skillPersonAssoc;
+//	}
+//
+//	public SkillPersonAssocEntity removeSkillPersonAssoc(SkillPersonAssocEntity skillPersonAssoc) {
+//		getSkillPersonAssocs().remove(skillPersonAssoc);
+//		skillPersonAssoc.setPerson(null);
+//
+//		return skillPersonAssoc;
+//	}
 
 }
