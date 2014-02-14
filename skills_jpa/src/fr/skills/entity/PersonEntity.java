@@ -1,8 +1,19 @@
 package fr.skills.entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 
 /**
@@ -14,7 +25,7 @@ import java.util.List;
 public class PersonEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_person")
 	private Integer idPerson;
 
@@ -62,9 +73,9 @@ public class PersonEntity implements Serializable {
 	@ManyToMany(mappedBy="persons")
 	private List<ProjectEntity> projects2;
 
-//	//bi-directional many-to-one association to SkillPersonAssocEntity
-//	@OneToMany(mappedBy="person")
-//	private List<SkillPersonAssocEntity> skillPersonAssocs;
+	//bi-directional many-to-one association to SkillPersonAssocEntity
+	@OneToMany(mappedBy="person")
+	private List<SkillPersonAssocEntity> skillPersonAssocs;
 
 	public PersonEntity() {
 	}
@@ -187,26 +198,26 @@ public class PersonEntity implements Serializable {
 		this.projects2 = projects2;
 	}
 
-//	public List<SkillPersonAssocEntity> getSkillPersonAssocs() {
-//		return this.skillPersonAssocs;
-//	}
-//
-//	public void setSkillPersonAssocs(List<SkillPersonAssocEntity> skillPersonAssocs) {
-//		this.skillPersonAssocs = skillPersonAssocs;
-//	}
-//
-//	public SkillPersonAssocEntity addSkillPersonAssoc(SkillPersonAssocEntity skillPersonAssoc) {
-//		getSkillPersonAssocs().add(skillPersonAssoc);
-//		skillPersonAssoc.setPerson(this);
-//
-//		return skillPersonAssoc;
-//	}
-//
-//	public SkillPersonAssocEntity removeSkillPersonAssoc(SkillPersonAssocEntity skillPersonAssoc) {
-//		getSkillPersonAssocs().remove(skillPersonAssoc);
-//		skillPersonAssoc.setPerson(null);
-//
-//		return skillPersonAssoc;
-//	}
+	public List<SkillPersonAssocEntity> getSkillPersonAssocs() {
+		return this.skillPersonAssocs;
+	}
+
+	public void setSkillPersonAssocs(List<SkillPersonAssocEntity> skillPersonAssocs) {
+		this.skillPersonAssocs = skillPersonAssocs;
+	}
+
+	public SkillPersonAssocEntity addSkillPersonAssoc(SkillPersonAssocEntity skillPersonAssoc) {
+		getSkillPersonAssocs().add(skillPersonAssoc);
+		skillPersonAssoc.setPerson(this);
+
+		return skillPersonAssoc;
+	}
+
+	public SkillPersonAssocEntity removeSkillPersonAssoc(SkillPersonAssocEntity skillPersonAssoc) {
+		getSkillPersonAssocs().remove(skillPersonAssoc);
+		skillPersonAssoc.setPerson(null);
+
+		return skillPersonAssoc;
+	}
 
 }

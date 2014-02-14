@@ -47,13 +47,13 @@ public class SkillPersonAssocEntity implements Serializable {
 		this.levelSkill = levelSkill;
 	}
 
-//	public PersonEntity getPerson() {
-//		return this.person;
-//	}
-//
-//	public void setPerson(PersonEntity person) {
-//		this.person = person;
-//	}
+	public PersonEntity getPerson() {
+		return this.person;
+	}
+
+	public void setPerson(PersonEntity person) {
+		this.person = person;
+	}
 
 	public SkillEntity getSkill() {
 		return this.skill;
