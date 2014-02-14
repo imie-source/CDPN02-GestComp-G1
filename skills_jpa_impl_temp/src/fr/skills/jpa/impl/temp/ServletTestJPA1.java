@@ -34,7 +34,7 @@ public class ServletTestJPA1 extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("MaBaseDeTestPU");   
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("skills_jpa");   
 		EntityManager em = emf.createEntityManager();    
 		
 		System.out.println("test");
