@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="skills_jpa" transaction-type="RESOURCE_LOCAL">
+		<non-jta-data-source>java:/skills_jpa</non-jta-data-source>
+		<class>fr.skills.entity.FonctionEntity</class>
+		<class>fr.skills.entity.NotificationEntity</class>
+		<class>fr.skills.entity.PermissionEntity</class>
+		<class>fr.skills.entity.PersonEntity</class>
+		<class>fr.skills.entity.PersonNotifAssocEntity</class>
+		<class>fr.skills.entity.PersonNotifAssocEntityPK</class>
+		<class>fr.skills.entity.ProfileEntity</class>
+		<class>fr.skills.entity.ProjectEntity</class>
+		<class>fr.skills.entity.PromotionEntity</class>
+		<class>fr.skills.entity.RightsAssocEntity</class>
+		<class>fr.skills.entity.RightsAssocEntityPK</class>
+		<class>fr.skills.entity.SkillEntity</class>
+		<class>fr.skills.entity.SkillPersonAssocEntity</class>
+		<class>fr.skills.entity.SkillPersonAssocEntityPK</class>
+		<class>fr.skills.entity.TaskEntity</class>
+	</persistence-unit>
+</persistence>
