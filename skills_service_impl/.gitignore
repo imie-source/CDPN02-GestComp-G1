@@ -1,1 +1,21 @@
-/bin
+*.pydevproject
+.metadata
+.gradle
+bin/
+
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+
+.loadpath
+
+# CDT-specific
+.cproject
+
+# sbteclipse plugin
+.target
+
+# TeXlipse plugin
+.texlipse
