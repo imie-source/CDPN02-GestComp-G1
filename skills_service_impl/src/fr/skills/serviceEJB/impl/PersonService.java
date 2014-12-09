@@ -17,9 +17,20 @@ public class PersonService implements IPersonService{
 	@EJB
 	private PersonEJB person;
 	
+
+	@Override
+	public Person findById(int anId) {
+		return person.findById(anId);
+	}
+
+	@Override
+	public void update(Person aPerson) {
+		// TODO Auto-generated method stub
+		person.update(aPerson);
+	}
+
 	@Override
 	public List<Person> getAll() {
-		// TODO Auto-generated method stub
 		return person.findAll();
 	}
 
