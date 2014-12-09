@@ -15,5 +15,6 @@
 	<classpathentry kind="lib" path="/home/imie/Téléchargements/eclipse/plugins/javax.persistence_2.1.0.v201304241213.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="lib" path="/home/imie/DEV/server/wildfly-8.1.0.Final/modules/system/layers/base/javax/ejb/api/main/jboss-ejb-api_3.2_spec-1.0.0.Final.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/skills_persistance"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
