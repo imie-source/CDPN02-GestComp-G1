@@ -3,29 +3,23 @@ package skills_views;
 import java.io.IOException;
 import java.util.List;
 
-import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import fr.skills.serviceEJB.impl.PersonService;
-import fr.skills.serviceEJB.inter.IPersonService;
 
 /**
- * Servlet implementation class MemberListServlet
+ * Servlet implementation class SkillsServlet
  */
-@WebServlet("/member-list")
-public class MemberListServlet extends AuthServlet {
+@WebServlet("/skill-list")
+public class SkillsServlet extends AuthServlet {
 	private static final long serialVersionUID = 1L;
-     
-//	@EJB
-//	private IPersonService personService;
-	
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberListServlet() {
+    public SkillsServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,17 +29,15 @@ public class MemberListServlet extends AuthServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		super.setRouteName("member", request);
+		super.setRouteName("skills", request);
 		super.verifyAuthentication(request, response);
-		
-		String pageTitle = "Liste des membres";
+			
+		String pageTitle = "Gérer les compétences";
 		request.setAttribute( "pageTitle", pageTitle );
-		String jspName = "../pages/member-list.jsp";
+		String jspName = "../pages/skill-list.jsp";
 		request.setAttribute( "jspName", jspName );
-		String content = "Liste des membres";
+		String content = "Liste des compétences";
 		request.setAttribute( "content", content );
-		
-//		List<Person> memberList = personService.getAll();
 		
 		this.getServletContext().getRequestDispatcher( "/views/template/layout.jsp" ).forward( request, response );
 	}
