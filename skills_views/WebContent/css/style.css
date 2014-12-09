@@ -25,3 +25,8 @@ body {
 .container .text-muted {
   margin: 20px 0;
 }
+
+#login_form{
+	width: 320px;
+	margin: 100px auto;
+}

@@ -1,7 +1,11 @@
+# Directories #
+build/
+target/
+bin/
+
 *.pydevproject
 .metadata
 .gradle
-bin/
 
 tmp/
 *.tmp
