@@ -25,7 +25,6 @@ public class PersonService implements IPersonService{
 
 	@Override
 	public void update(Person aPerson) {
-		// TODO Auto-generated method stub
 		person.update(aPerson);
 	}
 
@@ -33,5 +32,13 @@ public class PersonService implements IPersonService{
 	public List<Person> getAll() {
 		return person.findAll();
 	}
+
+	public List<String> getListMember(){
+		List<Person> lstMem = person.findAll();
+		
+		return null;
+		
+	}
+
 
 }

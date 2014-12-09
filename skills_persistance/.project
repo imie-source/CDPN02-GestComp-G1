@@ -3,6 +3,7 @@
 	<name>skills_persistance</name>
 	<comment></comment>
 	<projects>
+		<project>skills_jpa</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
