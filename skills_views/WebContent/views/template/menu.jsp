@@ -1,6 +1,4 @@
-<% String curPage = (String) session.getAttribute( "curPage" );;
-out.print(curPage);
-%>
+<% String curPage = (String) session.getAttribute( "curPage" ); %>
 <!-- Static navbar -->
 <nav class="navbar navbar-default" role="navigation">
 	<div class="container-fluid">
@@ -19,6 +17,7 @@ out.print(curPage);
 	        <li class="<%= curPage == "task" ? "active" : "" %>"><a href="${pageContext.request.contextPath}/task-list" title="Tâches">Tâches</a></li>
 	        <li class="<%= curPage == "project" ? "active" : "" %>"><a href="${pageContext.request.contextPath}/project-list" title="Projets">Projets</a></li>
 			<li class="<%= curPage == "member" ? "active" : "" %>"><a href="${pageContext.request.contextPath}/member-list" title="Membres">Membres</a></li>
+			<li class="<%= curPage == "skills" ? "active" : "" %>"><a href="${pageContext.request.contextPath}/skill-list" title="Compétences">Compétences</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 			<li>
