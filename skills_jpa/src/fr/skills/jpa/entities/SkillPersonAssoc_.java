@@ -1,4 +1,4 @@
-package skills_jpa_entities;
+package fr.skills.jpa.entities;
 
 import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;

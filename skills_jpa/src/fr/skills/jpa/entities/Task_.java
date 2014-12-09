@@ -1,4 +1,4 @@
-package skills_jpa_entities;
+package fr.skills.jpa.entities;
 
 import java.sql.Timestamp;
 import javax.annotation.Generated;

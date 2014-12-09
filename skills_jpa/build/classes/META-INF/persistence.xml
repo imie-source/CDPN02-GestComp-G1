@@ -2,18 +2,18 @@
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 	<persistence-unit name="skills_jpa" transaction-type="RESOURCE_LOCAL">
 		<non-jta-data-source>java:/skills_jpa</non-jta-data-source>
-		<class>skills_jpa_entities.Fonction</class>
-		<class>skills_jpa_entities.Notification</class>
-		<class>skills_jpa_entities.Permission</class>
-		<class>skills_jpa_entities.Person</class>
-		<class>skills_jpa_entities.Profile</class>
-		<class>skills_jpa_entities.Project</class>
-		<class>skills_jpa_entities.Promotion</class>
-		<class>skills_jpa_entities.RightsAssoc</class>
-		<class>skills_jpa_entities.RightsAssocPK</class>
-		<class>skills_jpa_entities.Skill</class>
-		<class>skills_jpa_entities.SkillPersonAssoc</class>
-		<class>skills_jpa_entities.SkillPersonAssocPK</class>
-		<class>skills_jpa_entities.Task</class>
+		<class>fr.skills.jpa.entities.Fonction</class>
+		<class>fr.skills.jpa.entities.Notification</class>
+		<class>fr.skills.jpa.entities.Permission</class>
+		<class>fr.skills.jpa.entities.Person</class>
+		<class>fr.skills.jpa.entities.Profile</class>
+		<class>fr.skills.jpa.entities.Project</class>
+		<class>fr.skills.jpa.entities.Promotion</class>
+		<class>fr.skills.jpa.entities.RightsAssoc</class>
+		<class>fr.skills.jpa.entities.RightsAssocPK</class>
+		<class>fr.skills.jpa.entities.Skill</class>
+		<class>fr.skills.jpa.entities.SkillPersonAssoc</class>
+		<class>fr.skills.jpa.entities.SkillPersonAssocPK</class>
+		<class>fr.skills.jpa.entities.Task</class>
 	</persistence-unit>
 </persistence>
