@@ -5,7 +5,7 @@
 	<projects>
 		<project>skills_jpa</project>
 		<project>skills_dto</project>
-		<project>skills_service_impl</project>
+		<project>skills_service</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
