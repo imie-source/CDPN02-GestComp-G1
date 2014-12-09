@@ -1,5 +1,6 @@
 package fr.skills.serviceEJB.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -29,15 +30,12 @@ public class PersonService implements IPersonService{
 	}
 
 	@Override
-	public List<Person> getAll() {
-		return person.findAll();
-	}
-
-	public List<String> getListMember(){
-		List<Person> lstMem = person.findAll();
-		
-		return null;
-		
+	public List<PersonDTO> getAll() {
+		List<PersonDTO> lst = new ArrayList<PersonDTO>();
+		for(Person p : person.findAll()){
+			lst.add(new PersonDTO(p.getName(), p.getDescription(), p.getAvailable()) );
+		}
+		return lst;
 	}
 
 

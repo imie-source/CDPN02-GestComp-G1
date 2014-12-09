@@ -27,7 +27,6 @@ public class PersonEJB {
 
 	public Person findById(int anId) {
 		Person vRet = em.find(Person.class, anId);
-
 		return vRet;
 	}
 
