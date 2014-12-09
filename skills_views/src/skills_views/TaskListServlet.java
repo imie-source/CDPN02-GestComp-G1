@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class TaskListServlet
  */
 @WebServlet("/task-list")
-public class TaskListServlet extends HttpServlet {
+public class TaskListServlet extends AuthServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -27,13 +27,18 @@ public class TaskListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
+		super.setRouteName("task", request);
+		super.verifyAuthentication(request, response);
+		
+		// TODO Auto-generated method stub		
 		String pageTitle = "Liste des tâches";
-		String jspName = "../pages/task-list.jsp";
-		String content = "Liste des tâches";
 		request.setAttribute( "pageTitle", pageTitle );
+		String jspName = "../pages/task-list.jsp";
 		request.setAttribute( "jspName", jspName );
+		String content = "Liste des tâches";
 		request.setAttribute( "content", content );
+		
 		this.getServletContext().getRequestDispatcher( "/views/template/layout.jsp" ).forward( request, response );
 	}
 

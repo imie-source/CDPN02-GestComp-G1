@@ -13,10 +13,26 @@ import javax.servlet.http.HttpSession;
  * Servlet implementation class AuthServlet
  */
 @WebServlet("/login")
-public class AuthServlet extends HttpServlet {
+public class AuthServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
        
-    /**
+	
+	public void setRouteName(String routeName, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		session.setAttribute("curPage", routeName);
+	}
+	
+	public String getRouteName(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String curPage = (String) session.getAttribute("curPage");
+		if(!curPage.isEmpty()){
+			return curPage;
+		}else{
+			return null;
+		}
+	}
+	
+	/**
      * @see HttpServlet#HttpServlet()
      */
     public AuthServlet() {

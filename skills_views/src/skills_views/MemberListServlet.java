@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class MemberListServlet
  */
 @WebServlet("/member-list")
-public class MemberListServlet extends HttpServlet {
+public class MemberListServlet extends AuthServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -27,13 +27,18 @@ public class MemberListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
+		super.setRouteName("member", request);
+		super.verifyAuthentication(request, response);
+		
+		// TODO Auto-generated method stub		
 		String pageTitle = "Liste des membres";
-		String jspName = "../pages/member-list.jsp";
-		String content = "Liste des membres";
 		request.setAttribute( "pageTitle", pageTitle );
+		String jspName = "../pages/member-list.jsp";
 		request.setAttribute( "jspName", jspName );
+		String content = "Liste des membres";
 		request.setAttribute( "content", content );
+		
 		this.getServletContext().getRequestDispatcher( "/views/template/layout.jsp" ).forward( request, response );
 	}
 

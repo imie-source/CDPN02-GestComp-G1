@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class AccountServlet
  */
 @WebServlet("/account")
-public class AccountServlet extends HttpServlet {
+public class AccountServlet extends AuthServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -27,12 +27,16 @@ public class AccountServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		super.setRouteName("account", request);
+		super.verifyAuthentication(request, response);
+		
 		// TODO Auto-generated method stub
 		String pageTitle = "Mon compte";
-		String jspName = "../pages/account.jsp";
-		String content = "Mon compte";
 		request.setAttribute( "pageTitle", pageTitle );
+		String jspName = "../pages/account.jsp";
 		request.setAttribute( "jspName", jspName );
+		String content = "Mon compte";
 		request.setAttribute( "content", content );
 		this.getServletContext().getRequestDispatcher( "/views/template/layout.jsp" ).forward( request, response );
 	}
