@@ -9,7 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import fr.skills.serviceEJB.impl.PersonService;
+import javax.servlet.http.HttpSession;
+
+import fr.skills.serviceEJB.impl.PersonDTO;
 import fr.skills.serviceEJB.inter.IPersonService;
 
 /**
@@ -18,9 +20,9 @@ import fr.skills.serviceEJB.inter.IPersonService;
 @WebServlet("/member-list")
 public class MemberListServlet extends AuthServlet {
 	private static final long serialVersionUID = 1L;
-     
-//	@EJB
-//	private IPersonService personService;
+	
+	@EJB
+	private IPersonService personService;
 	
     /**
      * @see HttpServlet#HttpServlet()
@@ -35,8 +37,9 @@ public class MemberListServlet extends AuthServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		HttpSession session = request.getSession();
 		super.setRouteName("member", request);
-		super.verifyAuthentication(request, response);
+		super.verifyAuthentication(request, response);	
 		
 		String pageTitle = "Liste des membres";
 		request.setAttribute( "pageTitle", pageTitle );
@@ -45,7 +48,8 @@ public class MemberListServlet extends AuthServlet {
 		String content = "Liste des membres";
 		request.setAttribute( "content", content );
 		
-//		List<Person> memberList = personService.getAll();
+		List<PersonDTO> memberList = personService.getAll();
+		session.setAttribute("memberList", memberList);
 		
 		this.getServletContext().getRequestDispatcher( "/views/template/layout.jsp" ).forward( request, response );
 	}
