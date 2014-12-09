@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import fr.skills.serviceEJB.impl.PersonService;
+
 /**
  * Servlet implementation class AuthServlet
  */
@@ -42,15 +44,15 @@ public class AuthServlet extends HttpServlet{
     
     public void verifyAuthentication(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	HttpSession session = request.getSession();
-//    	if(session.getAttribute("user") instanceof Person){
-//    		
-//    	}else{
+    	if(session.getAttribute("user") instanceof PersonService){
+    		
+    	}else{
 	    	String pageTitle = "Formulaire de connexion";
 			String jspName = "../pages/login.jsp";
 			request.setAttribute( "pageTitle", pageTitle );
 			request.setAttribute( "jspName", jspName );
 			this.getServletContext().getRequestDispatcher( "/views/template/layout.jsp" ).forward( request, response );
-//    	};
+    	};
     }
 
 	/**
