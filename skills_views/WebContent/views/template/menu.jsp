@@ -1,3 +1,6 @@
+<% String curPage = (String) session.getAttribute( "curPage" );;
+out.print(curPage);
+%>
 <!-- Static navbar -->
 <nav class="navbar navbar-default" role="navigation">
 	<div class="container-fluid">
@@ -12,10 +15,10 @@
 	    </div>
 		<div id="navbar" class="navbar-collapse collapse">
 		<ul class="nav navbar-nav">
-	        <li class="active"><a href="${pageContext.request.contextPath}/dashboard" title="Dashboard">Dashboard</a></li>
-	        <li><a href="${pageContext.request.contextPath}/task-list" title="Tâches">Tâches</a></li>
-	        <li><a href="${pageContext.request.contextPath}/project-list" title="Projets">Projets</a></li>
-			<li><a href="${pageContext.request.contextPath}/member-list" title="Membres">Membres</a></li>
+	        <li class="<%= curPage == "dashboard" ? "active" : "" %>"><a href="${pageContext.request.contextPath}/dashboard" title="Dashboard">Dashboard</a></li>
+	        <li class="<%= curPage == "task" ? "active" : "" %>"><a href="${pageContext.request.contextPath}/task-list" title="Tâches">Tâches</a></li>
+	        <li class="<%= curPage == "project" ? "active" : "" %>"><a href="${pageContext.request.contextPath}/project-list" title="Projets">Projets</a></li>
+			<li class="<%= curPage == "member" ? "active" : "" %>"><a href="${pageContext.request.contextPath}/member-list" title="Membres">Membres</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 			<li>
@@ -28,7 +31,7 @@
 			        </div>
 		        </form>
 			</li>
-			<li><a href="${pageContext.request.contextPath}/account">Mon compte</a></li>
+			<li class="<%= curPage == "account" ? "active" : "" %>"><a href="${pageContext.request.contextPath}/account">Mon compte</a></li>
 		</ul>
 	    </div><!--/.nav-collapse -->
 	</div><!--/.container-fluid -->

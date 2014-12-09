@@ -16,10 +16,10 @@
 <title><%= pageTitle %></title>
 </head>
 <body>
+	<% String jsp = (String) request.getAttribute("jspName"); %>
 	<div class="container">
 		<jsp:include page="header.jsp"/>
-		<jsp:include page="menu.jsp"/>
-		<% String jsp = (String) request.getAttribute("jspName"); %>
+		<jsp:include page="menu.jsp"/>		
 		<jsp:include page="<%= jsp %>"/>
 	</div>
 	<jsp:include page="footer.jsp"/>
