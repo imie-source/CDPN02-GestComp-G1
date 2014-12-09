@@ -40,7 +40,9 @@ public class PersonEJB {
 	}
 
 	public List<Person> findAll() {
-		return (List<Person>) em.find(Person.class, null);
+		//return (List<Person>) em.find(Person.class, null);
+		return (List<Person>) em.createNamedQuery("Person.findAll").getResultList();
+			
 	}
 
 }
