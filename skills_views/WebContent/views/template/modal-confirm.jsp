@@ -21,5 +21,7 @@
 </div><!-- /.modal -->
 
 <script type="text/javascript">
-	$('#modal-confirm').modal('show');
-</script>");
+	<!--
+		$('#modal-confirm').modal('show');
+	-->
+</script>

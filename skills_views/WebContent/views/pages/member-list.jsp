@@ -5,7 +5,7 @@
 <%-- <% List<PersonDTO> memberList = (List<PersonDTO>) session.getAttribute("memberList"); %> --%>
 <h1>Liste des membres <small>Espace de gestion</small></h1>
 
-<form role="form" action="/" method="POST">
+<form role="form" action="${pageContext.request.contextPath}/member-list" method="POST">
 	<table class="table table-striped table-hover table-condensed">
 		<thead>
 			<tr>
@@ -56,3 +56,11 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+	<!--
+		$(".delete a").click(function(){
+			alert('test');
+		});
+	-->
+</script>

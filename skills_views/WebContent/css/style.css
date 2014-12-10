@@ -82,6 +82,9 @@ footer > div .icon{
 	width: 10px;
 	text-align: right;
 }
+.delete input{
+	border: none;
+}
 
 /*___________________________________________________
  |

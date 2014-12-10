@@ -17,5 +17,7 @@
 </div><!-- /.modal -->
 
 <script type="text/javascript">
-	$('#modal-alert').modal('show');
-</script>");
+	<!--
+		$('#modal-alert').modal('show');
+	-->
+</script>
