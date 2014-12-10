@@ -20,7 +20,7 @@ public class PersonService implements IPersonService{
 	@Override
 	public PersonDTO findById(int anId) {
 		Person p = person.findById(anId);
-		return new PersonDTO(p.getName(), p.getDescription(), p.getAvailable());
+		return new PersonDTO(p.getIdPerson(), p.getName(), p.getDescription(), p.getAvailable());
 		//return  person.findById(anId);
 	}
 
@@ -33,7 +33,7 @@ public class PersonService implements IPersonService{
 	public List<PersonDTO> getAll() {
 		List<PersonDTO> lst = new ArrayList<PersonDTO>();
 		for(Person p : person.findAll()){
-			lst.add(new PersonDTO(p.getName(), p.getDescription(), p.getAvailable()));
+			lst.add(new PersonDTO(p.getIdPerson(),p.getName(), p.getDescription(), p.getAvailable()));
 		}
 		return lst;
 	}

@@ -1,15 +1,31 @@
 package fr.skills.serviceEJB.impl;
 
 public class PersonDTO {
+	Integer id;
 	String name,description;
 	Boolean status;
 
-	public PersonDTO(String name, String description, Boolean status) {
+	public PersonDTO(Integer id, String name, String description, Boolean status) {
 		super();
+		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.status = status;
 	}
+	
+	
+
+	public Integer getId() {
+		return id;
+	}
+
+
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+
 
 	public String getName() {
 		return name;
