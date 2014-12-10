@@ -22,10 +22,6 @@ body {
 -------------------------------------------------- */
 /* Not required for template or sticky footer method. */
 
-.container .text-muted {
-  margin: 20px 0;
-}
-
 #login_form{
 	width: 320px;
 	margin: 100px auto;
@@ -33,4 +29,57 @@ body {
 
 footer{
 	text-align: center;
+	display: table;
 }
+footer .container{
+	display: table-cell;
+	vertical-align: middle;
+}
+footer > div span{
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0 5px;
+}
+footer > div .icon{
+	font-size: 24px;
+}
+
+
+/*___________________________________________________
+ |
+ |						GENERAL ELEMENTS
+ |___________________________________________________*/
+.select{
+	width: 10px;
+}
+
+
+/*___________________________________________________
+ |
+ |						ICONS
+ |___________________________________________________*/
+.fa{
+	font-size: 16px;
+}
+
+
+/*___________________________________________________
+ |
+ |					TABLE STYLE
+ |___________________________________________________*/
+.name{
+	width: 150px;
+}
+.dispo{
+	width: 100px;
+	text-align: center;
+}
+.actions{
+	width: 60px;
+	text-align: right;
+}
+.edit, .delete{
+	width: 10px;
+	text-align: right;
+}
+

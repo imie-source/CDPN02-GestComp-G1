@@ -30,7 +30,7 @@
 			        </div>
 		        </form>
 			</li>
-			<li class="<%= curPage == "account" ? "active" : "" %>"><a href="${pageContext.request.contextPath}/account">Mon compte</a></li>
+			<li class="<%= curPage == "account" ? "active" : "" %> menu_account"><a href="${pageContext.request.contextPath}/account"><i class="fa fa-cog"></i> Mon compte</a></li>
 		</ul>
 	    </div><!--/.nav-collapse -->
 	</div><!--/.container-fluid -->
