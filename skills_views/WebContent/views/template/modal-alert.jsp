@@ -2,13 +2,19 @@
 	String jAlert = (String) session.getAttribute( "jAlert" );
 	session.removeAttribute( "jAlert" );
 %>
-<div id="modal-alert" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
+<div id="modal-alert" class="modal fade">
+  <div class="modal-dialog">
     <div class="modal-content">
-      	<%= jAlert %>
-    </div>
-  </div>
-</div>
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title"><i class="fa fa-info-circle"></i> Information</h4>
+      </div>
+      <div class="modal-body">
+        <p><%= jAlert %></p>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 <script type="text/javascript">
 	$('#modal-alert').modal('show');

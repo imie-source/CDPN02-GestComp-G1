@@ -37,7 +37,7 @@ public class MemberListServlet extends AuthServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-//		HttpSession session = request.getSession();
+		HttpSession session = request.getSession();
 		super.setRouteName("member", request);
 //		super.verifyAuthentication(request, response);
 		
@@ -48,8 +48,11 @@ public class MemberListServlet extends AuthServlet {
 		String content = "Liste des membres";
 		request.setAttribute( "content", content );
 		
+//		super.jAlert("Attention, vérifiez bien que vous n'êtes pas trop débile.", request);
+		super.jConfirm("Êtes-vous certain de bien vouloir supprimer tout ça ?", request);
+		
 		List<PersonDTO> memberList = personService.getAll();
-		//session.setAttribute("memberList", memberList);
+		session.setAttribute("memberList", memberList);
 		
 		this.getServletContext().getRequestDispatcher( "/views/template/layout.jsp" ).forward( request, response );
 	}

@@ -31,7 +31,7 @@
 		        </form>
 			</li>
 			<li class="dropdown <%= curPage == "account" ? "active" : "" %>">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-cog"></i>&nbsp;</span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-cog"></i>&nbsp;</a>
               <ul class="dropdown-menu" role="menu">
                 <li class="<%= curPage == "account" ? "active" : "" %>"><a href="${pageContext.request.contextPath}/account">Mon compte</a></li>
                 <li><a href="${pageContext.request.contextPath}/account">Mes tâches</a></li>

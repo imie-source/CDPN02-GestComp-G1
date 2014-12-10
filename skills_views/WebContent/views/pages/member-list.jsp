@@ -1,5 +1,6 @@
-<%-- <%@ page import="fr.skills.serviceEJB.impl.PersonDTO" %> --%>
-<%-- <%@ page import="java.util.List" %> --%>
+<%@ page import="fr.skills.serviceEJB.impl.PersonDTO" %>
+<%@ page import="java.util.List" %>
+<% List<PersonDTO> memberList = (List<PersonDTO>) session.getAttribute( "memberList" ); %>
 
 <%-- <% List<PersonDTO> memberList = (List<PersonDTO>) session.getAttribute("memberList"); %> --%>
 <h1>Liste des membres <small>Espace de gestion</small></h1>
@@ -16,22 +17,17 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td class="select"><input type="checkbox" name="" /></td>
-				<td class="name">Arthur LORENT</td>
-				<td class="desc">Description</td>
-				<td class="dispo"><i class="fa fa-angellist text-success"></i></td>
-				<td class="edit"><a href="#" title="Modifier"><i class="fa fa-wrench"></i></a></td>
-				<td class="delete"><a href="#" title="Supprimer"><i class="fa fa-times"></i></a></td>
-			</tr>
-			<tr>
-				<td class="select"><input type="checkbox" name="" /></td>
-				<td class="name">Arthur LORENT</td>
-				<td class="desc">Description</td>
-				<td class="dispo"><i class="fa fa-ban text-warning"></i></td>
-				<td class="edit"><a href="#" title="Modifier"><i class="fa fa-wrench"></i></a></td>
-				<td class="delete"><a href="#" title="Supprimer"><i class="fa fa-times"></i></a></td>
-			</tr>
+			<% for(PersonDTO member : memberList){
+				String status = member.getStatus() ? "fa-angellist text-success" : "fa-ban text-warning"; %>
+				<tr>
+					<td class="select"><input type="checkbox" name="" /></td>
+					<td class="name"><%= member.getName() %></td>
+					<td class="desc"><%= member.getDescription() %></td>
+					<td class="dispo"><i class="fa <%= status %>"></i></td>
+					<td class="edit"><a href="#" title="Modifier"><i class="fa fa-wrench"></i></a></td>
+					<td class="delete"><a href="#" title="Supprimer"><i class="fa fa-times"></i></a></td>
+				</tr>	
+			<% } %>
 		</tbody>
 	</table>
 	<button id="member_delete" type="submit" class="btn btn-danger"><i class="fa fa-arrow-up"></i> Supprimer les lignes selectionnées</button>

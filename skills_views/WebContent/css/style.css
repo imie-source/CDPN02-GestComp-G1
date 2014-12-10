@@ -83,10 +83,14 @@ footer > div .icon{
 	text-align: right;
 }
 
-
+/*___________________________________________________
+ |
+ |						MEMBERS
+ |___________________________________________________*/
 #member_delete, #member_add{
 	float: left;
 }
 #member_add{
 	margin-left: 15px;
 }
+
