@@ -20,7 +20,7 @@
 			<% for(PersonDTO member : memberList){
 				String status = member.getStatus() ? "fa-angellist text-success" : "fa-ban text-warning"; %>
 				<tr>
-					<td class="select"><input type="checkbox" name="" /></td>
+					<td class="select"><input type="checkbox" name="member_id" value="" /></td>
 					<td class="name"><%= member.getName() %></td>
 					<td class="desc"><%= member.getDescription() %></td>
 					<td class="dispo"><i class="fa <%= status %>"></i></td>
