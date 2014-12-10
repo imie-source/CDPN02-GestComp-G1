@@ -41,8 +41,12 @@ public class PersonEJB {
 
 	public List<Person> findAll() {
 		//return (List<Person>) em.find(Person.class, null);
-		return (List<Person>) em.createNamedQuery("Person.findAll").getResultList();
-			
+		return (List<Person>) em.createNamedQuery("Person.findAll").getResultList();		
 	}
-
+	
+	public void remove(Integer id) {
+		//return (List<Person>) em.find(Person.class, null);
+		Person person = em.find(Person.class, id);
+		em.remove(person);	
+	}
 }
