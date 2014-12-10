@@ -17,10 +17,14 @@
 </head>
 <body>
 	<% String jsp = (String) request.getAttribute("jspName"); %>
+	<% String curPage = (String) session.getAttribute( "curPage" ); %>
 	<div class="container">
+		<jsp:include page="modal.jsp"/>
 		<jsp:include page="header.jsp"/>
-		<jsp:include page="menu.jsp"/>		
-		<jsp:include page="<%= jsp %>"/>
+		<jsp:include page="menu.jsp"/>
+		<div id="<%= curPage %>" class="content">
+			<jsp:include page="<%= jsp %>"/>
+		</div>
 	</div>
 	<jsp:include page="footer.jsp"/>
 </body>
