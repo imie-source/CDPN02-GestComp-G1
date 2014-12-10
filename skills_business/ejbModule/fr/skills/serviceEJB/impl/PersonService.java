@@ -23,6 +23,13 @@ public class PersonService implements IPersonService{
 		return new PersonDTO(p.getIdPerson(), p.getName(), p.getDescription(), p.getAvailable());
 		//return  person.findById(anId);
 	}
+	
+	@Override
+	public void remove(int anId) {
+		Person p = person.findById(anId);
+		person.remove(p);
+		//return  person.findById(anId);
+	}
 
 	@Override
 	public void update(Person aPerson) {

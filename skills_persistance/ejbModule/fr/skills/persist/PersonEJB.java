@@ -44,9 +44,7 @@ public class PersonEJB {
 		return (List<Person>) em.createNamedQuery("Person.findAll").getResultList();		
 	}
 	
-	public void remove(Integer id) {
-		//return (List<Person>) em.find(Person.class, null);
-		Person person = em.find(Person.class, id);
-		em.remove(person);	
+	public void remove(Person p) {
+		em.remove(p);	
 	}
 }

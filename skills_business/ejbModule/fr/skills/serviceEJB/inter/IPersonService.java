@@ -12,5 +12,6 @@ public interface IPersonService {
 	public void update(Person aPerson);
 	
 	public List<PersonDTO> getAll();
+	void remove(int anId);
 
 }
