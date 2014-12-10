@@ -30,7 +30,14 @@
 			        </div>
 		        </form>
 			</li>
-			<li class="<%= curPage == "account" ? "active" : "" %> menu_account"><a href="${pageContext.request.contextPath}/account"><i class="fa fa-cog"></i> Mon compte</a></li>
+			<li class="dropdown <%= curPage == "account" ? "active" : "" %>">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-cog"></i>&nbsp;</span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li class="<%= curPage == "account" ? "active" : "" %>"><a href="${pageContext.request.contextPath}/account">Mon compte</a></li>
+                <li><a href="${pageContext.request.contextPath}/account">Mes tâches</a></li>
+                <li><a href="${pageContext.request.contextPath}/account">Mes projets</a></li>
+              </ul>
+            </li>
 		</ul>
 	    </div><!--/.nav-collapse -->
 	</div><!--/.container-fluid -->

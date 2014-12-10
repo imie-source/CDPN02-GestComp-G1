@@ -83,3 +83,10 @@ footer > div .icon{
 	text-align: right;
 }
 
+
+#member_delete, #member_add{
+	float: left;
+}
+#member_add{
+	margin-left: 15px;
+}
