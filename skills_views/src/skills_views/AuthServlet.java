@@ -32,6 +32,20 @@ public class AuthServlet extends HttpServlet{
 		}
 	}
 	
+	 public void jAlert(String msg, HttpServletRequest request){
+		if(!msg.isEmpty()){
+			HttpSession session = request.getSession();
+			session.setAttribute("jAlert", msg);
+		}
+	}
+	 
+	public void jConfirm(String msg, HttpServletRequest request){
+		if(!msg.isEmpty()){
+			HttpSession session = request.getSession();
+			session.setAttribute("jConfirm", msg);
+		}
+	}
+	
 	/**
      * @see HttpServlet#HttpServlet()
      */
@@ -52,7 +66,7 @@ public class AuthServlet extends HttpServlet{
 			this.getServletContext().getRequestDispatcher( "/views/template/layout.jsp" ).forward( request, response );
 //    	};
     }
-
+    
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */

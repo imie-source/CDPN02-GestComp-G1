@@ -18,8 +18,13 @@
 <body>
 	<% String jsp = (String) request.getAttribute("jspName"); %>
 	<% String curPage = (String) session.getAttribute( "curPage" ); %>
+	<% if(null != session.getAttribute("jConfirm")){ %>
+		<jsp:include page="modal-confirm.jsp"/>
+	<% } %>
+	<% if(null != session.getAttribute("jAlert")){ %>
+		<jsp:include page="modal-alert.jsp"/>
+	<% } %>
 	<div class="container">
-		<jsp:include page="modal.jsp"/>
 		<jsp:include page="header.jsp"/>
 		<jsp:include page="menu.jsp"/>
 		<div id="<%= curPage %>" class="content">

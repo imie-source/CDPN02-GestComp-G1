@@ -14,7 +14,5 @@
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/skills_business"/>
-	<classpathentry kind="lib" path="/home/imie/DEV/workspaceEclipseLuna/WorkspaceCDPN02/CDPN02-GestComp-G1/skills_views/WebContent/WEB-INF/lib/javax.servlet.jsp_2.2.0.v201112011158.jar"/>
-	<classpathentry kind="lib" path="/home/imie/DEV/workspaceEclipseLuna/WorkspaceCDPN02/CDPN02-GestComp-G1/skills_views/WebContent/WEB-INF/lib/javax.servlet_3.0.0.v201112011016.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

@@ -1,12 +1,16 @@
-<div class="modal fade">
+<%
+	String jConfirm = (String) session.getAttribute( "jConfirm" );
+	session.removeAttribute( "jConfirm" );
+%>
+<div id="modal-confirm" class="modal fade">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title">Modal title</h4>
+        <h4 class="modal-title">Demande de confirmation</h4>
       </div>
       <div class="modal-body">
-        <p>One fine body&hellip;</p>
+        <p><%= jConfirm %></p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary">Confirmer</button>
@@ -15,3 +19,7 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+<script type="text/javascript">
+	$('#modal-confirm').modal('show');
+</script>");

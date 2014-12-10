@@ -13,7 +13,7 @@
   <module>
     <ejb>skills_business.jar</ejb>
   </module>
-    <module>
+  <module>
     <java>skills_jpa.jar</java>
   </module>
 </application>
