@@ -6,7 +6,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
-import fr.skills.jpa.entities.Person;
+import skills_jpa.Person;
 import fr.skills.persist.PersonEJB;
 import fr.skills.serviceEJB.inter.IPersonService;
 

@@ -7,7 +7,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import fr.skills.jpa.entities.Person;
+import skills_jpa.Person;
 
 /**
  * Session Bean implementation class PersonEJB

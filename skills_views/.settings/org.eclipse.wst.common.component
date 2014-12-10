@@ -2,15 +2,6 @@
     <wb-module deploy-name="skills_views">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <dependent-module archiveName="skills_business.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/skills_business/skills_business">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="skills_persistance.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/skills_persistance/skills_persistance">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="skills_jpa.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/skills_jpa/skills_jpa">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <property name="context-root" value="skills_views"/>
         <property name="java-output-path" value="/skills_views/build/classes"/>
     </wb-module>
