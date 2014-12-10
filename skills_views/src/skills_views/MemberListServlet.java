@@ -3,12 +3,16 @@ package skills_views;
 import java.io.IOException;
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import fr.skills.serviceEJB.impl.PersonDTO;
+import fr.skills.serviceEJB.inter.IPersonService;
 
 /**
  * Servlet implementation class MemberListServlet
@@ -17,8 +21,8 @@ import javax.servlet.http.HttpSession;
 public class MemberListServlet extends AuthServlet {
 	private static final long serialVersionUID = 1L;
 	
-//	@EJB
-//	private IPersonService personService;
+	@EJB
+	private IPersonService personService;
 	
     /**
      * @see HttpServlet#HttpServlet()
@@ -44,8 +48,8 @@ public class MemberListServlet extends AuthServlet {
 		String content = "Liste des membres";
 		request.setAttribute( "content", content );
 		
-//		List<PersonDTO> memberList = personService.getAll();
-//		session.setAttribute("memberList", memberList);
+		List<PersonDTO> memberList = personService.getAll();
+		//session.setAttribute("memberList", memberList);
 		
 		this.getServletContext().getRequestDispatcher( "/views/template/layout.jsp" ).forward( request, response );
 	}

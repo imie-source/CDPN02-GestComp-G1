@@ -3,5 +3,25 @@
 	<persistence-unit name="skills_jpa" transaction-type="JTA">
 		<jta-data-source>java:/jdbc/imieDB</jta-data-source>
 		<class>skills_jpa.Person</class>
+		<class>skills_jpa.Fonction</class>
+		<class>skills_jpa.Notification</class>
+		<class>skills_jpa.Permission</class>
+		<class>skills_jpa.PersonNotifAssoc</class>
+		<class>skills_jpa.PersonNotifAssocPK</class>
+		<class>skills_jpa.PersonProfileAssoc</class>
+		<class>skills_jpa.PersonProfileAssocPK</class>
+		<class>skills_jpa.Profile</class>
+		<class>skills_jpa.Project</class>
+		<class>skills_jpa.ProjectPersonAssoc</class>
+		<class>skills_jpa.ProjectPersonAssocPK</class>
+		<class>skills_jpa.Promotion</class>
+		<class>skills_jpa.RightsAssoc</class>
+		<class>skills_jpa.RightsAssocPK</class>
+		<class>skills_jpa.Skill</class>
+		<class>skills_jpa.SkillPersonAssoc</class>
+		<class>skills_jpa.SkillPersonAssocPK</class>
+		<class>skills_jpa.SkillTaskAssoc</class>
+		<class>skills_jpa.SkillTaskAssocPK</class>
+		<class>skills_jpa.Task</class>
 	</persistence-unit>
 </persistence>
