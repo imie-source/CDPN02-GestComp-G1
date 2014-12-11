@@ -3,6 +3,7 @@ package skills_views;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class DashboardServlet
  */
-
+@WebServlet("/dashboard")
 public class DashboardServlet extends AuthServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -26,9 +27,10 @@ public class DashboardServlet extends AuthServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		// verify authentification
+		super.verifyAuthentication(request, response);	
+		// set route name
 		super.setRouteName("dashboard", request);
-		super.verifyAuthentication(request, response);
 		
 		String pageTitle = "Dashboard";
 		request.setAttribute( "pageTitle", pageTitle );

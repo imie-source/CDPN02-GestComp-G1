@@ -36,6 +36,9 @@
                 <li class="<%= curPage == "account" ? "active" : "" %>"><a href="${pageContext.request.contextPath}/account">Mon compte</a></li>
                 <li><a href="${pageContext.request.contextPath}/account">Mes tâches</a></li>
                 <li><a href="${pageContext.request.contextPath}/account">Mes projets</a></li>
+                <% if(session.getAttribute("user") != null){ %>
+                	<li><a href="${pageContext.request.contextPath}/account?order=logout">Déconnexion</a></li>
+                <% } %>
               </ul>
             </li>
 		</ul>

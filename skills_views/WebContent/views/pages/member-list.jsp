@@ -20,12 +20,12 @@
 			<% for(PersonDTO member : memberList){
 				String status = member.getStatus() ? "fa-angellist text-success" : "fa-ban text-warning"; %>
 				<tr>
-					<td class="select"><input type="checkbox" name="member_id" value="" /></td>
+					<td class="select"><input type="checkbox" name="member_id" value="<%= member.getId() %>" /></td>
 					<td class="name"><%= member.getName() %></td>
 					<td class="desc"><%= member.getDescription() %></td>
 					<td class="dispo"><i class="fa <%= status %>"></i></td>
 					<td class="edit"><a href="#" title="Modifier"><i class="fa fa-wrench"></i></a></td>
-					<td class="delete"><a href="#" title="Supprimer"><i class="fa fa-times"></i></a></td>
+					<td class="delete"><a href="#" title="Supprimer"><input type="hidden" value="<%= member.getId() %>"><i class="fa fa-times"></i></a></td>
 				</tr>	
 			<% } %>
 		</tbody>
@@ -57,10 +57,22 @@
   </div>
 </div>
 
-<script type="text/javascript">
+<script type="text/javascript">	
 	<!--
-		$(".delete a").click(function(){
-			alert('test');
+	$(".delete a").click(function(e){
+		e.preventDefault();
+		var id = $(this).children('input').attr('value');
+		$.ajax({
+			type: 'POST',
+			url: '${pageContext.request.contextPath}/member-list',
+			data : {
+				'id': id,
+				'order': "delete"
+			},
+			success: function(data){
+				location.reload();
+            }
 		});
+	});
 	-->
 </script>
