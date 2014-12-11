@@ -6,6 +6,7 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import skills_jpa.Person;
 
@@ -46,5 +47,16 @@ public class PersonEJB {
 	
 	public void remove(Person p) {
 		em.remove(p);	
+	}
+	
+	public Person checkLogin(String login, String password) {
+		TypedQuery<Person> query = em.createQuery(
+		        "Person.findByName = :name", Person.class);
+		Person p = query.setParameter("name", login).getSingleResult();
+		if(p.getPswd().equals(password)){
+			return p;
+		}else{
+			return null;
+		}
 	}
 }

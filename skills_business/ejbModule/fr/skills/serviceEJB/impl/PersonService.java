@@ -25,10 +25,14 @@ public class PersonService implements IPersonService{
 	}
 	
 	@Override
-	public void remove(int anId) {
+	public Boolean remove(int anId) {
+		Boolean res= false;
 		Person p = person.findById(anId);
-		person.remove(p);
-		//return  person.findById(anId);
+		if(p !=null){
+			person.remove(p);	
+			res=true;
+		}
+		return res;
 	}
 
 	@Override
@@ -44,6 +48,14 @@ public class PersonService implements IPersonService{
 		}
 		return lst;
 	}
-
+	@Override
+	public PersonDTO checkLogin(String login, String password) {
+		PersonDTO res=null;
+		Person p = person.checkLogin(login, password);
+		if(p != null){
+			res = new PersonDTO(p.getIdPerson(), p.getName(), p.getDescription(),p.getAvailable());
+		}
+		return res;
+	}
 
 }
