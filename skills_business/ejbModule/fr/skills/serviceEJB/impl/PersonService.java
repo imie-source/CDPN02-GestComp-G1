@@ -50,7 +50,7 @@ public class PersonService implements IPersonService{
 	}
 	@Override
 	public PersonDTO checkLogin(String login, String password) {
-		PersonDTO res=null;
+		PersonDTO res = null;
 		Person p = person.checkLogin(login, password);
 		if(p != null){
 			res = new PersonDTO(p.getIdPerson(), p.getName(), p.getDescription(),p.getAvailable());
