@@ -17,17 +17,22 @@
 			</tr>
 		</thead>
 		<tbody>
-			<% for(PersonDTO member : memberList){
-				String status = member.getStatus() ? "fa-angellist text-success" : "fa-ban text-warning"; %>
-				<tr>
-					<td class="select"><input type="checkbox" name="member_id" value="<%= member.getId() %>" /></td>
-					<td class="name"><%= member.getName() %></td>
-					<td class="desc"><%= member.getDescription() %></td>
-					<td class="dispo"><i class="fa <%= status %>"></i></td>
-					<td class="edit"><a href="#" title="Modifier"><i class="fa fa-wrench"></i></a></td>
-					<td class="delete"><a href="#" title="Supprimer"><input type="hidden" value="<%= member.getId() %>"><i class="fa fa-times"></i></a></td>
-				</tr>	
-			<% } %>
+			<% if(memberList != null){
+				for(PersonDTO member : memberList){
+					String status = member.getStatus() ? "fa-angellist text-success" : "fa-ban text-warning";
+					%>
+					<tr>
+						<td class="select"><input type="checkbox" name="member_id" value="<%= member.getId() %>" /></td>
+						<td class="name"><%= member.getName() %></td>
+						<td class="desc"><%= member.getDescription() %></td>
+						<td class="dispo"><i class="fa <%= status %>"></i></td>
+						<td class="edit"><a href="#" title="Modifier"><input type="hidden" value="<%= member.getId() %>"><i class="fa fa-wrench"></i></a></td>
+						<td class="delete"><a href="#" title="Supprimer"><input type="hidden" value="<%= member.getId() %>"><i class="fa fa-times"></i></a></td>
+					</tr>	
+				<% }
+			}else{ %>
+				<p class="text-warning">Aucun membre enregistré.</p>
+		<% } %>
 		</tbody>
 	</table>
 	<button id="member_delete" type="submit" class="btn btn-danger"><i class="fa fa-arrow-up"></i> Supprimer les lignes selectionnées</button>
@@ -105,35 +110,78 @@
 	// DELETE
 	$(".delete a").click(function(e){
 		e.preventDefault();
-		alert($(this).parent("tr td.name").val());
+		var name = $(this).parent('td').parent('tr').children('td.name').text();
 		$('#modal-confirm').modal('show');
-		$('#confirm-content').html("Êtes-vous bien certain d'effectuer la suppression de ?");
-
-		/* var id = $(this).children('input').attr('value');
-		$.ajax({
-			type : 'POST',
-			url : '${pageContext.request.contextPath}/resources/member',
-			contentType: 'application/json; charset=utf-8',
-			dataType: "json",
-			data : JSON.stringify({
-				'id': id			
-			}),
-			success: function(data){
-				$.ajax({
-					type: 'POST',
-					url: '${pageContext.request.contextPath}/member-list',
-					data : {
-						'id': data.id,
-						'jAlert': 'removed'
-					},
-					success: function(data){
-						location.reload();
-		            }
-				});
-            }
-		}); */
+		$('#confirm-content').html('Êtes-vous bien certain de vouloir supprimer le membre "'+name+'" ?');
 		
+		var id = $(this).children('input').attr('value');	
+		$('#confirm-order').click(function() {
+			$.ajax({
+				type : 'DELETE',
+				url : '${pageContext.request.contextPath}/resources/member/'+id,
+				success: function(data){
+					alert(data.id);
+					$.ajax({
+						type: 'POST',
+						url: '${pageContext.request.contextPath}/member-list',
+						data : {
+							'name': data.name,
+							'jAlert': 'removed'
+						},
+						success: function(data){
+							location.reload();
+			            }
+					});
+	            }
+			});
+		});
 	});
+
+	// UPDATE
+	$(".edit a").click(function(e){
+		e.preventDefault();
+		var id = $(this).children('input').attr('value');	
+		$.ajax({
+			type : 'GET',
+			url : '${pageContext.request.contextPath}/resources/member/'+id,
+			success: function(data){
+				$('#myModal').modal('show');
+				$('#myModal .modal-title').text('Modifier un membre');
+				$('#inputLogin').val(data.login);
+				$('#inputName').val(data.name);
+				$('#inputPassword').val(data.pswd);
+				$('#inputEmail').val(data.email);
+				$('#inputPhone').val(data.phone);
+				$('#inputCat').val(data.description);
+				if(data.status === true){
+					$('#inputStatus').attr('checked', 'checked');
+				}
+				$('#createMemberSubmit').text('Modifier');
+				$('#createMemberSubmit').click(function() {
+					$.ajax({
+						type : 'PUT',
+						contentType: 'application/json; charset=utf-8',
+						dataType: "json",
+						url : '${pageContext.request.contextPath}/resources/member',
+						success: function(data){
+							$.ajax({
+								type: 'POST',
+								url: '${pageContext.request.contextPath}/member-list',
+								data : {
+									'name': data.name,
+									'jAlert': 'updated'
+								},
+								success: function(data){
+									location.reload();
+					            }
+							});
+			            }
+					});
+				});
+			}
+		});
+	});
+	
 	// CREATE
 	$("#createMemberSubmit").click(function(e){
 		e.preventDefault();

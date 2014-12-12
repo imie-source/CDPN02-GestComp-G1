@@ -56,10 +56,7 @@ public class PersonResource {
 	}
 	
 	@PUT
-	@Path("/{id}")
-	public Response updateMember(@PathParam("id") Integer id){
-		PersonDTO p = new PersonDTO();
-		p.setId(id);
+	public Response updateMember(PersonDTO p){
 		PersonDTO member = personService.update(p);
 		return Response.ok(member).build();
 	}

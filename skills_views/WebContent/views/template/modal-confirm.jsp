@@ -9,7 +9,7 @@
         <p id="confirm-content"></p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Confirmer</button>
+        <button id="confirm-order" type="button" class="btn btn-primary">Confirmer</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
       </div>
     </div><!-- /.modal-content -->

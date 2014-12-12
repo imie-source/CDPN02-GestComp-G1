@@ -26,7 +26,7 @@ public class PersonService implements IPersonService{
 	@Override
 	public PersonDTO remove(PersonDTO personDto) {
 		if(personDto.getId() != null){
-			Person p = person.remove(Mapping.toPersonJPA(personDto));
+			Person p = person.remove(person.findById(personDto.getId()));
 			return Mapping.toPersonDTO(p);
 		}else{
 			return null;

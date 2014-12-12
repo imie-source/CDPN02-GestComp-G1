@@ -33,14 +33,8 @@ public class MemberListServlet extends BaseServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// set route name
 		super.setRouteName("member", request);
-		// order
-		if(request.getParameter("order") == null){
-			System.out.println("no order");																	// DEBUG
-			this.loadMemberList(request, response);
-			this.loadPage(request, response);
-		}else{
-			System.out.println(request.getParameter("order"));												// DEBUG
-		}
+		this.loadMemberList(request, response);
+		this.loadPage(request, response);
 	}
 
 	/**
@@ -56,13 +50,15 @@ public class MemberListServlet extends BaseServlet {
 				Integer id = Integer.valueOf(request.getParameter("id"));
 				PersonDTO person = new PersonDTO();
 				person.setId(id);
-				personService.findById(person);
-				super.jAlert(person.getName()+" a bien été ajouté.", request);
+				PersonDTO res = personService.findById(person);
+				super.jAlert(res.getName()+" a bien été ajouté.", request);
 			}else if(request.getParameter("jAlert").equals("removed")){
-				Integer id = Integer.valueOf(request.getParameter("id"));
-				PersonDTO person = new PersonDTO();
-				person.setId(id);
-				super.jAlert(person.getName()+" a bien été supprimé.", request);
+				String name = request.getParameter("name");
+				super.jAlert(name+" a bien été supprimé.", request);
+			}
+			else if(request.getParameter("jAlert").equals("updated")){
+				String name = request.getParameter("name");
+				super.jAlert(name+" a bien été mis à jour.", request);
 			}
 		}
 	}
