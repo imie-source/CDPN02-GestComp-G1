@@ -4,20 +4,18 @@ import java.io.IOException;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import fr.skills.serviceEJB.impl.PersonDTO;
 import fr.skills.serviceEJB.inter.IPersonService;
 
 /**
- * Servlet implementation class AuthServlet
+ * Servlet implementation class BaseServlet
  */
-@WebServlet("/login")
-public class AuthServlet extends HttpServlet{
+//@WebServlet("")
+public class BaseServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
 	@EJB
@@ -57,19 +55,9 @@ public class AuthServlet extends HttpServlet{
 	/**
      * @see HttpServlet#HttpServlet()
      */
-    public AuthServlet() {
+    public BaseServlet() {
         super();
         // TODO Auto-generated constructor stub
-    }
-    
-    public void verifyAuthentication(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	HttpSession session = request.getSession();
-    	PersonDTO user = new PersonDTO(1, "LORENT Arthur", "Stagiaire", true);
-    	session.setAttribute("user", user);
-    	boolean b = session.getAttribute("user") instanceof PersonDTO;
-		if(!b){
-    		response.sendRedirect("./account?order=login");
-    	}
     }
     
 	/**

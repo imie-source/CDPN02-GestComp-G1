@@ -10,7 +10,7 @@
     <url-pattern>/dashboard</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-      <servlet-name>javax.ws.rs.core.Application</servlet-name>
-      <url-pattern>/resources/*</url-pattern>
-</servlet-mapping>
+    <servlet-name>javax.ws.rs.core.Application</servlet-name>
+    <url-pattern>/resources/*</url-pattern>
+  </servlet-mapping>
 </web-app>

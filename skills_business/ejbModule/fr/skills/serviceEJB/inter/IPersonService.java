@@ -13,6 +13,7 @@ public interface IPersonService {
 	
 	public List<PersonDTO> getAll();
 	Boolean remove(int anId);
-	PersonDTO checkLogin(String login, String password);
+	PersonDTO checkLogin(PersonDTO personDto);
+	PersonDTO createPerson(PersonDTO p);
 
 }

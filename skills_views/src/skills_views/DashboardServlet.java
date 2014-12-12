@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class DashboardServlet
  */
 @WebServlet("/dashboard")
-public class DashboardServlet extends AuthServlet {
+public class DashboardServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -26,9 +26,7 @@ public class DashboardServlet extends AuthServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// verify authentification
-		super.verifyAuthentication(request, response);	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		// set route name
 		super.setRouteName("dashboard", request);
 		

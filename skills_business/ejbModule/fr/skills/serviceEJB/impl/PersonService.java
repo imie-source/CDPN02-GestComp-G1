@@ -20,8 +20,7 @@ public class PersonService implements IPersonService{
 	@Override
 	public PersonDTO findById(int anId) {
 		Person p = person.findById(anId);
-		return new PersonDTO(p.getIdPerson(), p.getName(), p.getDescription(), p.getAvailable());
-		//return  person.findById(anId);
+		return Mapping.toPersonDTO(p);
 	}
 	
 	@Override
@@ -43,19 +42,26 @@ public class PersonService implements IPersonService{
 	@Override
 	public List<PersonDTO> getAll() {
 		List<PersonDTO> lst = new ArrayList<PersonDTO>();
-		for(Person p : person.findAll()){
-			lst.add(new PersonDTO(p.getIdPerson(),p.getName(), p.getDescription(), p.getAvailable()));
+		for(Person p : person.findAll()){	
+			lst.add(Mapping.toPersonDTO(p));
 		}
 		return lst;
 	}
+	
 	@Override
-	public PersonDTO checkLogin(String login, String password) {
+	public PersonDTO checkLogin(PersonDTO personDto) {
 		PersonDTO res = null;
-		Person p = person.checkLogin(login, password);
+		Person p = person.checkLogin(personDto.getLogin(), personDto.getPswd());
 		if(p != null){
-			res = new PersonDTO(p.getIdPerson(), p.getName(), p.getDescription(),p.getAvailable());
+			res = Mapping.toPersonDTO(p);
 		}
 		return res;
+	}
+	
+	@Override
+	public PersonDTO createPerson(PersonDTO p){
+		Person res = person.createPerson(Mapping.toPersonJPA(p));	
+		return Mapping.toPersonDTO(res);
 	}
 
 }

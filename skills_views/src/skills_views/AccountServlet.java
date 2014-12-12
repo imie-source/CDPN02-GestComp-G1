@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
  * Servlet implementation class AccountServlet
  */
 @WebServlet("/account")
-public class AccountServlet extends AuthServlet {
+public class AccountServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -34,8 +34,6 @@ public class AccountServlet extends AuthServlet {
 		HttpSession session = request.getSession();
 		// get order
 		if(request.getParameter("order") == null){
-			// verify authentification
-			super.verifyAuthentication(request, response);
 			System.out.println("no order");																	// DEBUG
 			// load logged account page
 			this.loadLoggedAccountPage(request, response);
@@ -44,8 +42,6 @@ public class AccountServlet extends AuthServlet {
 			if(request.getParameter("order").equals("logout")){
 				session.removeAttribute("user");
 				response.sendRedirect("./dashboard");
-			}else if(request.getParameter("order").equals("login")){
-				this.loadUnloggedPage(request, response);
 			}
 		}
 	}
@@ -64,14 +60,6 @@ public class AccountServlet extends AuthServlet {
 		request.setAttribute( "jspName", jspName );
 		String content = "Mon compte";
 		request.setAttribute( "content", content );
-		this.getServletContext().getRequestDispatcher( "/views/template/layout.jsp" ).forward( request, response );
-	}
-	
-	public void loadUnloggedPage(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
-		String pageTitle = "Formulaire de connexion";
-		String jspName = "../pages/login.jsp";
-		request.setAttribute( "pageTitle", pageTitle );
-		request.setAttribute( "jspName", jspName );
 		this.getServletContext().getRequestDispatcher( "/views/template/layout.jsp" ).forward( request, response );
 	}
 

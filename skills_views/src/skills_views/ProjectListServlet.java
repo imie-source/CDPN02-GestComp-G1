@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class ProjectListServlet
  */
 @WebServlet("/project-list")
-public class ProjectListServlet extends AuthServlet {
+public class ProjectListServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -29,9 +29,7 @@ public class ProjectListServlet extends AuthServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		super.setRouteName("project", request);
-		super.verifyAuthentication(request, response);
-		
-		// TODO Auto-generated method stub		
+	
 		String pageTitle = "Liste des projets";
 		request.setAttribute( "pageTitle", pageTitle );
 		String jspName = "../pages/project-list.jsp";

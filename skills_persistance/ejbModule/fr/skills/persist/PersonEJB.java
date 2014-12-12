@@ -51,12 +51,19 @@ public class PersonEJB {
 	
 	public Person checkLogin(String login, String password) {
 		TypedQuery<Person> query = em.createQuery(
-		        "Person.findByName = :name", Person.class);
-		Person p = query.setParameter("name", login).getSingleResult();
+		        "Person.findByName = :login", Person.class);
+		Person p = query.setParameter("login", login).getSingleResult();
 		if(p.getPswd().equals(password)){
 			return p;
 		}else{
 			return null;
 		}
+	}
+	
+	public Person createPerson(Person member){
+		em.persist(member);		
+		TypedQuery<Person> query = em.createQuery( "Person.findByName = :login", Person.class);
+		Person p = query.setParameter("login", member.getLogin()).getSingleResult();
+		return p;
 	}
 }

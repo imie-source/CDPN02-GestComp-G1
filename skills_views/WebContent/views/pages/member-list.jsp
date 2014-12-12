@@ -47,7 +47,26 @@
         <h4 class="modal-title" id="myModalLabel">Modal title</h4>
       </div>
       <div class="modal-body">
-        ...
+      		<div id="member-add_form">
+				<form class="form-signin" role="form">
+					<h2 class="form-signin-heading">Ajouter un membre</h2>
+					
+					<label for="inputLogin" class="sr-only">Login</label>
+					<input type="text" id="inputLogin" class="form-control" placeholder="Login" title="Login" required autofocus>
+					
+					<label for="inputEmail" class="sr-only">Adresse email</label>
+					<input type="email" id="inputEmail" class="form-control" placeholder="Adresse email" title="Adresse email" required autofocus>
+					
+					<label for="inputPassword" class="sr-only">Password</label>
+					<input type="password" id="inputPassword" class="form-control" placeholder="Password" title="Password" required>
+					<div class="checkbox">
+					  <label>
+					  	<input type="checkbox" value="remember_me"> Se souvenir de moi
+					  </label>
+					</div>
+					<button class="btn btn-lg btn-primary btn-block" type="submit">Connexion</button>
+				</form>
+			</div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

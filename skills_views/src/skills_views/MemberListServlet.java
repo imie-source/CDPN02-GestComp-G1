@@ -16,7 +16,7 @@ import fr.skills.serviceEJB.impl.PersonDTO;
  * Servlet implementation class MemberListServlet
  */
 @WebServlet("/member-list")
-public class MemberListServlet extends AuthServlet {
+public class MemberListServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
 	
     /**
@@ -33,8 +33,6 @@ public class MemberListServlet extends AuthServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// set route name
 		super.setRouteName("member", request);
-		// verify authentification
-		super.verifyAuthentication(request, response);
 		// order
 		if(request.getParameter("order") == null){
 			System.out.println("no order");																	// DEBUG
@@ -50,8 +48,6 @@ public class MemberListServlet extends AuthServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		if(request.getParameter("order") != null){
-			// verify authentification
-			super.verifyAuthentication(request, response);
 			// set route name
 			super.setRouteName("member", request);
 			// order

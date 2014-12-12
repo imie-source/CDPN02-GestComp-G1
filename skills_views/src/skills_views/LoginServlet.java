@@ -9,16 +9,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class TaskListServlet
+ * Servlet implementation class LoginServlet
  */
-@WebServlet("/task-list")
-public class TaskListServlet extends BaseServlet {
+@WebServlet("/login")
+public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public TaskListServlet() {
+    public LoginServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,17 +27,10 @@ public class TaskListServlet extends BaseServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		super.setRouteName("task", request);
-		
-		// TODO Auto-generated method stub		
-		String pageTitle = "Liste des tâches";
+		String pageTitle = "Formulaire de connexion";
+		String jspName = "../pages/login.jsp";
 		request.setAttribute( "pageTitle", pageTitle );
-		String jspName = "../pages/task-list.jsp";
 		request.setAttribute( "jspName", jspName );
-		String content = "Liste des tâches";
-		request.setAttribute( "content", content );
-		
 		this.getServletContext().getRequestDispatcher( "/views/template/layout.jsp" ).forward( request, response );
 	}
 

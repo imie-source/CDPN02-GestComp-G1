@@ -67,6 +67,9 @@ footer > div .icon{
  |
  |					TABLE STYLE
  |___________________________________________________*/
+table.table thead td{
+	font-weight: bold;
+}
 .name{
 	width: 150px;
 }

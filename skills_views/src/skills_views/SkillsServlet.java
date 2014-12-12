@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class SkillsServlet
  */
 @WebServlet("/skill-list")
-public class SkillsServlet extends AuthServlet {
+public class SkillsServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -29,7 +29,6 @@ public class SkillsServlet extends AuthServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		super.setRouteName("skills", request);
-		super.verifyAuthentication(request, response);
 			
 		String pageTitle = "Gérer les compétences";
 		request.setAttribute( "pageTitle", pageTitle );
