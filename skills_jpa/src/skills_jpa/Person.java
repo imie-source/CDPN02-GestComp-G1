@@ -18,7 +18,7 @@ import javax.persistence.NamedQuery;
 @Entity
 @NamedQueries({
 @NamedQuery(name="Person.findAll", query="SELECT p FROM Person p"),
-@NamedQuery(name="Person.findByName", query="SELECT p FROM Person p WHERE p.login = :login")
+@NamedQuery(name="Person.findByLogin", query="SELECT p FROM Person p WHERE p.login = :login")
 })
 public class Person implements Serializable {
 	private static final long serialVersionUID = 1L;
