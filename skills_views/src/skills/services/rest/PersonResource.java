@@ -1,4 +1,4 @@
-package fr.skills.service.REST;
+package skills.services.rest;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
