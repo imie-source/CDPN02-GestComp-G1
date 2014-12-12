@@ -18,25 +18,25 @@ public class PersonService implements IPersonService{
 	
 
 	@Override
-	public PersonDTO findById(int anId) {
-		Person p = person.findById(anId);
+	public PersonDTO findById(PersonDTO personDto) {
+		Person p = person.findById(personDto.getId());
 		return Mapping.toPersonDTO(p);
 	}
 	
 	@Override
-	public Boolean remove(int anId) {
-		Boolean res= false;
-		Person p = person.findById(anId);
-		if(p !=null){
-			person.remove(p);	
-			res=true;
+	public PersonDTO remove(PersonDTO personDto) {
+		if(personDto.getId() != null){
+			Person p = person.remove(Mapping.toPersonJPA(personDto));
+			return Mapping.toPersonDTO(p);
+		}else{
+			return null;
 		}
-		return res;
 	}
 
 	@Override
-	public void update(Person aPerson) {
-		person.update(aPerson);
+	public PersonDTO update(PersonDTO personDto) {
+		Person p = person.update(Mapping.toPersonJPA(this.findById(personDto)));
+		return Mapping.toPersonDTO(p);
 	}
 
 	@Override

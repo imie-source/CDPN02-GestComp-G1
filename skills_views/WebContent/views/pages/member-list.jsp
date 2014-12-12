@@ -102,22 +102,38 @@
 
 <script type="text/javascript">	
 	<!--
+	// DELETE
 	$(".delete a").click(function(e){
 		e.preventDefault();
-		var id = $(this).children('input').attr('value');
-		$.ajax({
-			type: 'POST',
-			url: '${pageContext.request.contextPath}/member-list',
-			data : {
-				'id': id,
-				'order': "delete"
-			},
-			success: function(data){
-				location.reload();
-            }
-		});
-	});
+		$('#modal-confirm').modal('show');
+		$('#confirm-content').html("Êtes-vous bien certain d'effectuer la suppression de "+$(this).children("input").val()+" ?");
 
+		/* var id = $(this).children('input').attr('value');
+		$.ajax({
+			type : 'POST',
+			url : '${pageContext.request.contextPath}/resources/member',
+			contentType: 'application/json; charset=utf-8',
+			dataType: "json",
+			data : JSON.stringify({
+				'id': id			
+			}),
+			success: function(data){
+				$.ajax({
+					type: 'POST',
+					url: '${pageContext.request.contextPath}/member-list',
+					data : {
+						'id': data.id,
+						'jAlert': 'removed'
+					},
+					success: function(data){
+						location.reload();
+		            }
+				});
+            }
+		}); */
+		
+	});
+	// CREATE
 	$("#createMemberSubmit").click(function(e){
 		e.preventDefault();
 		var url = $("#member-add_form form").attr("action");

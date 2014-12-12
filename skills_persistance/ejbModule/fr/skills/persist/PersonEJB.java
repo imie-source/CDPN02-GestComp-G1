@@ -31,22 +31,19 @@ public class PersonEJB {
 		return vRet;
 	}
 
-	public void update(Person aPerson) {
+	public Person update(Person aPerson) {
 		Person vRet = em.merge(aPerson);
-		save(vRet);
-	}
-
-	public void save(Person aPerson) {
-		em.persist(aPerson);
+		em.persist(vRet);
+		return this.findById(vRet.getIdPerson());
 	}
 
 	public List<Person> findAll() {
-		//return (List<Person>) em.find(Person.class, null);
 		return (List<Person>) em.createNamedQuery("Person.findAll").getResultList();		
 	}
 	
-	public void remove(Person p) {
-		em.remove(p);	
+	public Person remove(Person p) {
+		em.remove(p);
+		return p;
 	}
 	
 	public Person checkLogin(String login, String password) {

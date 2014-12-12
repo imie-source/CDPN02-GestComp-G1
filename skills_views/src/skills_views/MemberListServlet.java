@@ -54,11 +54,14 @@ public class MemberListServlet extends BaseServlet {
 			System.out.println(request.getParameter("jAlert"));												// DEBUG
 			if(request.getParameter("jAlert").equals("added")){
 				Integer id = Integer.valueOf(request.getParameter("id"));
-				PersonDTO person = personService.findById(id);
+				PersonDTO person = new PersonDTO();
+				person.setId(id);
+				personService.findById(person);
 				super.jAlert(person.getName()+" a bien été ajouté.", request);
 			}else if(request.getParameter("jAlert").equals("removed")){
 				Integer id = Integer.valueOf(request.getParameter("id"));
-				PersonDTO person = personService.findById(id);
+				PersonDTO person = new PersonDTO();
+				person.setId(id);
 				super.jAlert(person.getName()+" a bien été supprimé.", request);
 			}
 		}
