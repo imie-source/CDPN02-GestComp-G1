@@ -62,8 +62,8 @@ public class PersonEJB {
 	
 	public Person createPerson(Person member){
 		em.persist(member);		
-		TypedQuery<Person> query = em.createQuery( "Person.findByName = :login", Person.class);
-		Person p = query.setParameter("login", member.getLogin()).getSingleResult();
-		return p;
+//		TypedQuery<Person> query = em.createQuery( "Person.findByName = :login", Person.class);
+//		Person p = query.setParameter("login", member.getLogin()).getSingleResult();
+		return member;
 	}
 }

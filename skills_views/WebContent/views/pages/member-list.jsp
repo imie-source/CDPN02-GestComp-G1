@@ -44,36 +44,60 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title" id="myModalLabel">Ajouter un membre</h4>
       </div>
       <div class="modal-body">
       		<div id="member-add_form">
-				<form class="form-signin" role="form">
-					<h2 class="form-signin-heading">Ajouter un membre</h2>
+				<form class="form-signin" role="form" action="${pageContext.request.contextPath}/resources/member" method="POST">
 					
-					<label for="inputLogin" class="sr-only">Login</label>
-					<input type="text" id="inputLogin" class="form-control" placeholder="Login" title="Login" required autofocus>
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-user"></i></span>
+						<input type="text" id="inputLogin" class="form-control" placeholder="Login" title="Login" required autofocus>
+					</div>
 					
-					<label for="inputEmail" class="sr-only">Adresse email</label>
-					<input type="email" id="inputEmail" class="form-control" placeholder="Adresse email" title="Adresse email" required autofocus>
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+						<input type="password" id="inputPassword" class="form-control" placeholder="Password" title="Password" required>
+					</div>
 					
-					<label for="inputPassword" class="sr-only">Password</label>
-					<input type="password" id="inputPassword" class="form-control" placeholder="Password" title="Password" required>
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-user"></i></span>
+						<input type="text" id="inputName" class="form-control" placeholder="Nom" title="Nom" required autofocus>
+					</div>
+					
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+						<input type="email" id="inputEmail" class="form-control" placeholder="Adresse email" title="Adresse email" required autofocus>
+					</div>
+					
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-phone-square"></i></span>
+						<input type="tel" id="inputPhone" class="form-control" placeholder="Téléphone" title="Téléphone" required autofocus>
+					</div>
+					
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-users"></i></span>
+						<input type="text" id="inputCat" class="form-control" placeholder="Catégorie" title="Catégorie" required autofocus>
+					</div>			
+					
 					<div class="checkbox">
 					  <label>
-					  	<input type="checkbox" value="remember_me"> Se souvenir de moi
+					    <input id="inputStatus" type="checkbox"> Disponible ?
 					  </label>
 					</div>
-					<button class="btn btn-lg btn-primary btn-block" type="submit">Connexion</button>
+					
+					<button id="createMemberSubmit" class="btn btn-lg btn-primary btn-block" type="submit">Ajouter</button>
 				</form>
 			</div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
       </div>
     </div>
   </div>
+  <script type="text/javascript">
+	 
+  </script>
 </div>
 
 <script type="text/javascript">	
@@ -90,6 +114,51 @@
 			},
 			success: function(data){
 				location.reload();
+            }
+		});
+	});
+
+	$("#createMemberSubmit").click(function(e){
+		e.preventDefault();
+		var url = $("#member-add_form form").attr("action");
+		var login = $("#inputLogin").val();
+		var pswd = $("#inputPassword").val();
+		var email = $("#inputEmail").val();
+		var phone = $("#inputPhone").val();
+		var cat = $("#inputCat").val();
+		var status = $("#inputStatus").val();
+		var name = $("#inputName").val();
+		if(status === "on"){
+			status = true;
+		}else{
+			status = false;
+		}
+		$.ajax({
+			type : 'POST',
+			url : url,
+			contentType: 'application/json; charset=utf-8',
+			dataType: "json",
+			data : JSON.stringify({
+				'login': login,
+				'name': name,
+				'pswd': pswd,
+				'email': email,
+				'phone': phone,
+				'description': cat,
+				'status': status			
+			}),
+			success: function(data){
+				$.ajax({
+					type: 'POST',
+					url: '${pageContext.request.contextPath}/member-list',
+					data : {
+						'id': data.id,
+						'jAlert': 'added'
+					},
+					success: function(data){
+						location.reload();
+		            }
+				});
             }
 		});
 	});

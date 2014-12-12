@@ -47,13 +47,19 @@ public class MemberListServlet extends BaseServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
-		if(request.getParameter("order") != null){
-			// set route name
-			super.setRouteName("member", request);
-			// order
-			System.out.println(request.getParameter("order"));												// DEBUG
-			if(request.getParameter("order").equals("delete")){		
-				this.deleteMember(request, response);
+		// set route name
+		super.setRouteName("member", request);
+		// jAlert
+		if(request.getParameter("jAlert") != null){
+			System.out.println(request.getParameter("jAlert"));												// DEBUG
+			if(request.getParameter("jAlert").equals("added")){
+				Integer id = Integer.valueOf(request.getParameter("id"));
+				PersonDTO person = personService.findById(id);
+				super.jAlert(person.getName()+" a bien été ajouté.", request);
+			}else if(request.getParameter("jAlert").equals("removed")){
+				Integer id = Integer.valueOf(request.getParameter("id"));
+				PersonDTO person = personService.findById(id);
+				super.jAlert(person.getName()+" a bien été supprimé.", request);
 			}
 		}
 	}
@@ -64,19 +70,6 @@ public class MemberListServlet extends BaseServlet {
 		String jspName = "../pages/member-list.jsp";
 		request.setAttribute( "jspName", jspName );
 		this.getServletContext().getRequestDispatcher( "/views/template/layout.jsp" ).forward( request, response );
-	}
-	
-	public Boolean deleteMember(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{	
-		Integer id = Integer.valueOf(request.getParameter("id"));
-		PersonDTO person = personService.findById(id);
-		System.out.println("suppression du user "+person.getId());
-		Boolean status = personService.remove(id);
-		if(status){
-			super.jAlert(person.getName()+" a bien été supprimé.", request);	
-		}else{
-			super.jAlert("Erreur dans la suppression. Merci de contacter le support.", request);
-		}
-		return true;
 	}
 	
 	public void loadMemberList(HttpServletRequest request, HttpServletResponse response){
