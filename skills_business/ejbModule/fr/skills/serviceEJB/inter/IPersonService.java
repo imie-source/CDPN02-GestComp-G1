@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.ejb.Local;
 
-import skills_jpa.Person;
 import fr.skills.serviceEJB.impl.PersonDTO;
 @Local
 public interface IPersonService {

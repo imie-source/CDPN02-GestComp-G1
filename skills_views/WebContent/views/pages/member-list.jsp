@@ -105,8 +105,9 @@
 	// DELETE
 	$(".delete a").click(function(e){
 		e.preventDefault();
+		alert($(this).parent("table td.name").html());
 		$('#modal-confirm').modal('show');
-		$('#confirm-content').html("Êtes-vous bien certain d'effectuer la suppression de "+$(this).children("input").val()+" ?");
+		$('#confirm-content').html("Êtes-vous bien certain d'effectuer la suppression de ?");
 
 		/* var id = $(this).children('input').attr('value');
 		$.ajax({
