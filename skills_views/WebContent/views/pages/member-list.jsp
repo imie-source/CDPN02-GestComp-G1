@@ -105,7 +105,7 @@
 	// DELETE
 	$(".delete a").click(function(e){
 		e.preventDefault();
-		alert($(this).parent("table td.name").html());
+		alert($(this).parent("tr td.name").val());
 		$('#modal-confirm').modal('show');
 		$('#confirm-content').html("Êtes-vous bien certain d'effectuer la suppression de ?");
 
